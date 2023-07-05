@@ -1,6 +1,12 @@
 <script>
+import { store } from '../store.js'
 export default {
     name: "AppHeader",
+    data() {
+        return {
+            store
+        }
+    }
 }
 </script>
 
@@ -26,15 +32,20 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="nav-link">
-                        <span class="">Sign up/Login</span>
-                    </router-link>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle bg-white text-black" type="button" id="triggerId"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sign up/ Login
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="triggerId">
+                            <a class="dropdown-item" target="_blank" :href="store.server + 'register'">Registrati</a>
+                            <a class="dropdown-item" :href="store.server">Login</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
