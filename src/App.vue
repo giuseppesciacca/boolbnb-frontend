@@ -17,4 +17,7 @@ export default {
 
 <style lang="scss">
 @use './styles/general.scss';
+body::-webkit-scrollbar {
+    display: none;
+}
 </style>
