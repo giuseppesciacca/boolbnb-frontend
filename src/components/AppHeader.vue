@@ -21,7 +21,7 @@ export default {
                     <router-link to="/" class="nav-link">
                         <span class="">Apartments</span>
                     </router-link>
-                    <router-link to="/" class="nav-link">
+                    <router-link :to="{ 'name': 'about' }" class="nav-link">
                         <span class="">About</span>
                     </router-link>
                 </li>
