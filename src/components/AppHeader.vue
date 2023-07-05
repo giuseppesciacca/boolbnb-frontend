@@ -24,7 +24,7 @@ export default {
                     </router-link>
                 </li>
                 <li class="d-flex gap-5">
-                    <router-link to="/" class="nav-link">
+                    <router-link to="/apartments" class="nav-link">
                         <span class="">Apartments</span>
                     </router-link>
                     <router-link to="/" class="nav-link">
