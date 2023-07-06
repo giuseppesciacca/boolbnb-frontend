@@ -31,9 +31,9 @@ export default {
             <input type="text">
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments">
-            <div class="col h-100 mb-4" v-for="apartment in apartments">
-                <div class="card text-left">
-                    <img class="card-img-top img-fluid" :src="`${store.server}storage/${apartment.image[0]}`" alt="">
+            <div class="col rounded-4 mb-4" v-for="apartment in apartments">
+                <div class="card h-100 rounded-4 border-0">
+                    <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg" :src="`${store.server}storage/${apartment.image[0]}`" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{ apartment.title }}</h4>
                     </div>

@@ -7,8 +7,12 @@ export default {
         return {
             store,
             apartments: null,
-            heart:false
         }
+    },
+    methods:{
+        select(apartment) {
+        apartment.selected = !apartment.selected;
+  }
     },
     mounted() {
         axios
@@ -29,9 +33,9 @@ export default {
 <template>
     <div class="container mt-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments">
-            <div class="col rounded-4 mb-4" v-for="apartment in apartments">
-                <div class="card h-100 rounded-4 border-0 position-relative">
-                    <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;" :class="heart ? 'fa-solid' : ''" @click="heart = !heart"></i>
+            <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
+                <div class="card h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
+                    <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;" :class="apartment.selected ? 'fa-solid' : ''" @click="select(apartment)"></i>
                     <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg" :src="`${store.server}storage/${apartment.image[0]}`" alt="">
                     <div class="card-body">
                         <h6 class="text-left fw-semibold">{{apartment.title}}</h6>
