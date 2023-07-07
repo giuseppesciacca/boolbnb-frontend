@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import HomeView from './views/HomeView.vue'
 import AboutView from './views/AboutView.vue'
 import ApartmentsPage from './views/ApartmentsPage.vue'
-
+import SingleApartment from './views/SingleApartmentview.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [{
@@ -19,7 +19,11 @@ const router = createRouter({
         path: '/about',
         name: 'about',
         component: AboutView,
-    }
+    }, {
+        path: '/apartment/:slug',
+        name: 'single-apartment',
+        component: SingleApartment
+    },
     ]
 })
 
