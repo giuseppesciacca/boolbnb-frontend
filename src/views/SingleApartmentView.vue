@@ -39,7 +39,7 @@ export default {
                 </div>
                 <h4> {{ apartments.address }}</h4>
                 <div class="info d-flex justify-content-between">
-                    <div class="primary-info d-flex flex-column flex-grow-1">
+                    <div class="primary-info d-flex flex-column w-75">
                         <h6>
                             <span class="badge bg-primary">{{ apartments.beds }}</span> Letti |
                             <span class="badge bg-primary">{{ apartments.bathrooms }}</span> Bagni |
@@ -51,9 +51,9 @@ export default {
                     </div>
                     <div class="form w-100">
                         <div class="card p-3 m-4 shadow">
-<h4>
-    Richiedi info sull'appartamento
-</h4>
+                            <h4>
+                                Richiedi info sull'appartamento
+                            </h4>
                             <form action="" @submit.prevent="submitform()">
 
                                 <div class="mb-3">
