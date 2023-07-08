@@ -19,12 +19,12 @@ export default {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex justify-content-around w-100">
                 <li>
-                    <router-link to="/" class="nav-link">
+                    <router-link :to="{ 'name': 'home' }" class="nav-link">
                         <span class="">BoolBnb</span>
                     </router-link>
                 </li>
                 <li class="d-flex gap-5">
-                    <router-link to="/apartments" class="nav-link">
+                    <router-link :to="{ 'name': 'apartments' }" class="nav-link">
                         <span class="">Apartments</span>
                     </router-link>
                     <router-link :to="{ 'name': 'about' }" class="nav-link">
