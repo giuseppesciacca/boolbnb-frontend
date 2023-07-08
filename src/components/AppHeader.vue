@@ -17,10 +17,10 @@ export default {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav d-flex justify-content-around w-100">
+            <ul class="navbar-nav d-flex justify-content-around align-items-center w-100">
                 <li>
                     <router-link :to="{ 'name': 'home' }" class="nav-link">
-                        <span class="">BoolBnb</span>
+                        <img src="../assets/logo.png" height=40 alt="boolbnb logo">
                     </router-link>
                 </li>
                 <li class="d-flex gap-5">
