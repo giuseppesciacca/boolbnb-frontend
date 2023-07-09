@@ -18,7 +18,7 @@ export default {
             .get(store.server + store.end_point_apartments + this.$route.params.slug)
 
             .then(response => {
-                console.log(response.data.result);
+                //console.log(response.data.result);
                 this.apartments = response.data.result
             })
             .catch(err => {

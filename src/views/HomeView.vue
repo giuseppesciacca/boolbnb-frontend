@@ -18,7 +18,7 @@ export default {
         axios
             .get(store.server + store.end_point_apartments)
             .then(response => {
-                console.log(response.data.results);
+                //console.log(response.data.results);
                 this.apartments = response.data.results.data
             })
             .catch(err => {
