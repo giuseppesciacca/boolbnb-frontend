@@ -11,7 +11,9 @@ export default {
             text_to_search: '',
             services: null,
             selected_service: [],
-            range:10
+            range:10,
+            rooms:1,
+            beds:1
         }
     },
     methods: {
@@ -22,9 +24,13 @@ export default {
             if (this.all_apartments) {
                 this.apartments = []
                 this.all_apartments.forEach((apartment) => {
-                    if (apartment.services.length > 0) {
+/*                     console.log(apartment.services.length >= this.selected_service.length && 
+                        apartment.rooms >= this.rooms && apartment.beds >= this.beds); */
+                    if (apartment.services.length >= this.selected_service.length && 
+                        apartment.rooms >= this.rooms && apartment.beds >= this.beds
+                    ) {
                         apartment.services.forEach(service => {
-                            if (this.selected_service.includes(service.name)) {
+                            if (this.selected_service.includes(service.name) && this.selected_service.length > 0) {
                                 this.apartments.push(apartment)
                             }
                         });
@@ -84,11 +90,11 @@ export default {
             <div class="offcanvas-body">
                 <div>
                     <label for="rooms" class="me-2">Rooms</label>
-                    <input type="number" name="rooms" id="rooms">
+                    <input type="number" name="rooms" id="rooms" v-model="rooms">
                 </div>
                 <div class="my-2">
                     <label for="beds" class="me-2">Beds</label>
-                    <input type="number" name="beds" id="beds">
+                    <input type="number" name="beds" id="beds" v-model="beds">
                 </div>
                 <div>
                     <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
