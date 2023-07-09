@@ -13,7 +13,8 @@ export default {
             selected_service: [],
             range:10,
             rooms:1,
-            beds:1
+            beds:1,
+            servizio:''
         }
     },
     methods: {
@@ -26,15 +27,20 @@ export default {
                 this.all_apartments.forEach((apartment) => {
 /*                     console.log(apartment.services.length >= this.selected_service.length && 
                         apartment.rooms >= this.rooms && apartment.beds >= this.beds); */
-                    if (apartment.services.length >= this.selected_service.length && 
-                        apartment.rooms >= this.rooms && apartment.beds >= this.beds
-                    ) {
-                        apartment.services.forEach(service => {
-                            if (this.selected_service.includes(service.name) && this.selected_service.length > 0) {
-                                this.apartments.push(apartment)
-                            }
-                        });
-                    }
+                    if ( apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
+                        console.log(this.servizio)
+                        if(this.selected_service.length === 0){
+                            this.apartments.push(apartment)
+                        } else {
+                            apartment.services.forEach(service => {
+                                if(this.selected_service.includes(service.name)) {
+                                    this.apartments.push(apartment)
+                                }
+                            });
+                        }
+               
+                    } 
+
                 });
             }
         },
