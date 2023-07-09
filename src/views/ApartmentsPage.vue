@@ -11,6 +11,7 @@ export default {
             text_to_search: '',
             services: null,
             selected_service: [],
+            range:10
         }
     },
     methods: {
@@ -27,6 +28,16 @@ export default {
                                 this.apartments.push(apartment)
                             }
                         });
+                    }
+                });
+            }
+        },
+        filter_apartments_by_input(){
+            if (this.all_apartments) {
+                this.apartments = []
+                this.all_apartments.forEach((apartment) => {
+                    if (apartment.title.toLowerCase().includes(this.text_to_search.toLowerCase()) || apartment.address.toLowerCase().includes(this.text_to_search.toLowerCase())) {
+                        this.apartments.push(apartment)
                     }
                 });
             }
@@ -80,8 +91,8 @@ export default {
                     <input type="number" name="beds" id="beds">
                 </div>
                 <div>
-                    <label for="raggio" class="me-2">Raggio kilometri</label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="20">
+                    <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
+                    <input type="range" name="raggio" id="raggio" min="1" max="20" v-model.number="range">
                 </div>
                 <div v-if="services" class="my-3">
                     <div class="d-inline-block me-4" v-for="service in services">
@@ -94,9 +105,9 @@ export default {
             </div>
         </div>
         <div class="text-center my-5">
-            <input type="text" v-model="text_to_search">
+            <input type="text" v-model="text_to_search" @keydown="filter_apartments_by_input()">
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
             <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
                 <div class="card h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
                     <router-link :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }"><i
@@ -111,6 +122,9 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <p class="text-center">Nessun appartamento trovato!</p>
         </div>
     </div>
 </template>
