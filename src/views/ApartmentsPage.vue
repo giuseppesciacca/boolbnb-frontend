@@ -13,8 +13,7 @@ export default {
             selected_service: [],
             range:10,
             rooms:1,
-            beds:1,
-            servizio:''
+            beds:1
         }
     },
     methods: {
@@ -25,8 +24,6 @@ export default {
             if (this.all_apartments) {
                 this.apartments = []
                 this.all_apartments.forEach((apartment) => {
-/*                     console.log(apartment.services.length >= this.selected_service.length && 
-                        apartment.rooms >= this.rooms && apartment.beds >= this.beds); */
                     if ( apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
                         console.log(this.servizio)
                         if(this.selected_service.length === 0){
@@ -39,8 +36,7 @@ export default {
                             });
                         }
                
-                    } 
-
+                    }
                 });
             }
         },
