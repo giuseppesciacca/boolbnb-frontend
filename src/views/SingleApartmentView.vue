@@ -11,6 +11,21 @@ export default {
     },
     methods: {
 
+        map() {
+            this.map = tt.map({
+                    container: 'map',
+                    key: 'pgm8CUe9eprWlGQKZLpGGv3UIBBCl7RG',
+                    center: [this.apartments.longitude, this.apartments.latitude],
+                    zoom: 14,
+                    radius: 20000
+                });
+
+                const element = document.createElement('div')
+                element.id = 'marker'
+
+                const marker = new tt.Marker({ element: element }).setLngLat([this.apartments.longitude, this.apartments.latitude]).addTo(map);
+        }
+
     },
     mounted() {
 
@@ -20,6 +35,18 @@ export default {
             .then(response => {
                 //console.log(response.data.result);
                 this.apartments = response.data.result
+                this.map = tt.map({
+                    container: 'map',
+                    key: 'pgm8CUe9eprWlGQKZLpGGv3UIBBCl7RG',
+                    center: [this.apartments.longitude, this.apartments.latitude],
+                    zoom: 14,
+                    radius: 20000
+                });
+
+                const element = document.createElement('div')
+                element.id = 'marker'
+
+                const marker = new tt.Marker({ element: element }).setLngLat([this.apartments.longitude, this.apartments.latitude]).addTo(map);
             })
             .catch(err => {
                 console.log(err)
@@ -31,6 +58,7 @@ export default {
 
 <template>
     <div class="container">
+        <di id="map" style="height: 300px;" class="d-block"></di>
         <div class="row py-4" v-if="apartments">
             <div class="card shadow p-5">
                 <h1 class="card-title">{{ apartments.title }}</h1>
