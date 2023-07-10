@@ -15,7 +15,7 @@ export default {
 
         onMounted(() => {
             map = tt.map({
-                key: 'G3sSC0bt1YXLOMVWbGpRvxKI1medERrY',
+                key: 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr',
                 container: 'map',
                 center: [props.lon, props.lat],
                 zoom: 14,
