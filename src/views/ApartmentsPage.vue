@@ -25,13 +25,14 @@ export default {
                 this.apartments = []
                 this.all_apartments.forEach((apartment) => {
                     if ( apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
-                        console.log(this.servizio)
                         if(this.selected_service.length === 0){
                             this.apartments.push(apartment)
                         } else {
                             apartment.services.forEach(service => {
                                 if(this.selected_service.includes(service.name)) {
-                                    this.apartments.push(apartment)
+                                    if(!this.apartments.includes(apartment)){
+                                        this.apartments.push(apartment)
+                                    }
                                 }
                             });
                         }
