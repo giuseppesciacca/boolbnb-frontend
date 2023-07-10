@@ -42,7 +42,7 @@ export default {
 
 <template>
     <div class="container">
-        <div id="map" style="height: 300px;" class="d-block"></div>
+
         <div class="row py-4" v-if="apartments">
             <div class="card shadow p-5">
                 <h1 class="card-title">{{ apartments.title }}</h1>
@@ -106,6 +106,9 @@ export default {
                 </div>
             </div>
 
+        </div>
+        <div class="row">
+            <div id="map" style="height: 300px;" class="d-block mb-5"></div>
         </div>
     </div>
 </template>
