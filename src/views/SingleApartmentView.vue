@@ -11,8 +11,40 @@ export default {
         return {
             store,
             apartments: null,
+
+            name: '',
+            surname: '',
+            email: '',
+            message: '',
+            apartment_id: '',
+            loading: false,
+            success: false,
+            errors: {}
+
+
         }
     },
+    methods: {
+        submitForm() {
+            this.loading = true
+            const data = {
+                name: this.name,
+                surname: this.surname,
+                email: this.email,
+                message: this.message,
+                apartment_id: this.apartment_id
+            }
+
+            axios
+                .post(store.server + store.end_point_messages, data)
+                .then(response => {
+                    console.log(response);
+                }).catch(err => {
+                    console.log(err);
+                })
+        }
+    },
+
     mounted() {
         axios
             .get(store.server + store.end_point_apartments + this.$route.params.slug)
@@ -56,13 +88,20 @@ export default {
                             <h4>
                                 Richiedi info sull'appartamento
                             </h4>
-                            <form action="" @submit.prevent="submitform()">
+                            <form @submit.prevent="submitForm()">
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Nome</label>
-                                    <input type="text" name="" id="" class="form-control" placeholder="Piermario Rossi"
-                                        aria-describedby="nameHelper" v-model="name">
+                                    <label for="name" class="form-label">Nome</label>
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Piermario Rossi" aria-describedby="nameHelper" v-model="name">
                                     <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="surname" class="form-label">Cognome</label>
+                                    <input type="text" name="surname" id="surname" class="form-control"
+                                        placeholder="Piermario Rossi" aria-describedby="surnameHelper" v-model="surname">
+                                    <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
 
                                 <div class="mb-3">
