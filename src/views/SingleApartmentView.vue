@@ -99,9 +99,6 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div id="map" style="height: 300px;" class="d-block mb-5"></div>
-        </div>
     </div>
 </template>
 
