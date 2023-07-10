@@ -11,7 +11,6 @@ export default {
         return {
             store,
             apartments: null,
-
             name: '',
             surname: '',
             email: '',
@@ -20,19 +19,17 @@ export default {
             loading: false,
             success: false,
             errors: {}
-
-
         }
     },
     methods: {
-        submitForm() {
+        submitForm(apartment) {
             this.loading = true
             const data = {
                 name: this.name,
                 surname: this.surname,
                 email: this.email,
                 message: this.message,
-                apartment_id: this.apartment_id
+                apartment_id: apartment
             }
 
             axios
@@ -88,7 +85,7 @@ export default {
                             <h4>
                                 Richiedi info sull'appartamento
                             </h4>
-                            <form @submit.prevent="submitForm()">
+                            <form @submit.prevent="submitForm(apartments.id)">
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nome</label>
