@@ -10,6 +10,31 @@ export default {
         }
     },
     methods: {
+        /**
+         * 
+         * @param {double} lat1 
+         * @param {double} lon1 
+         * @param {double} lat2 
+         * @param {double} lon2 
+         * @returns {float} distanza tra due lat e long
+         */
+        distanceBetweenTwoLatAndLog(lat1, lon1, lat2, lon2) {
+            const r = 6371000; // metres. raggio terrestre
+            const phi1 = lat1 * Math.PI / 180; // φ, λ in radians
+            const phi2 = lat2 * Math.PI / 180;
+            const deltaPhy = (lat2 - lat1) * Math.PI / 180;
+            const deltaLambda = (lon2 - lon1) * Math.PI / 180;
+
+            const a = Math.sin(deltaPhy / 2) * Math.sin(deltaPhy / 2) +
+                Math.cos(phi1) * Math.cos(phi2) *
+                Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            const distance = r * c; // in metres
+            const distanceInKm = distance / 1000;
+
+            return distanceInKm
+        }
 
     },
     mounted() {
@@ -42,8 +67,16 @@ export default {
 
 <template>
     <div class="container">
-
         <div class="row py-4" v-if="apartments">
+            <div>
+                <p>Distanza tra lat e log scelte da me e questo appartamento:
+                    <strong>
+                        {{ distanceBetweenTwoLatAndLog(38.019050000000, 12.519150000000, this.apartments.latitude,
+                            this.apartments.longitude) }}
+                    </strong> km.
+                </p>
+            </div>
+
             <div class="card shadow p-5">
                 <h1 class="card-title">{{ apartments.title }}</h1>
                 <div class="card p-2 m-4 shadow">
