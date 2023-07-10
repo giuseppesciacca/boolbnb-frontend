@@ -1,12 +1,17 @@
 <script>
 import { store } from '../store.js'
 import axios from 'axios';
+import MapMarker from './MapMarker.vue';
 export default {
     name: "SingleApartment",
+    components: {
+        MapMarker
+    },
     data() {
         return {
             store,
             apartments: null,
+
             name: '',
             surname: '',
             email: '',
@@ -39,37 +44,27 @@ export default {
                 })
         }
     },
-    mounted() {
 
+    mounted() {
         axios
             .get(store.server + store.end_point_apartments + this.$route.params.slug)
             .then(response => {
-                //console.log(response.data.result);
                 this.apartments = response.data.result
-                this.map = tt.map({
-                    container: 'map',
-                    key: 'pgm8CUe9eprWlGQKZLpGGv3UIBBCl7RG',
-                    center: [this.apartments.longitude, this.apartments.latitude],
-                    zoom: 14,
-                    radius: 20000
-                });
-
-                const element = document.createElement('div')
-                element.id = 'marker'
-
-                const marker = new tt.Marker({ element: element }).setLngLat([this.apartments.longitude, this.apartments.latitude]).addTo(map);
+                this.position = {
+                    lng: this.apartments.longitude,
+                    lat: this.apartments.latitude
+                }
             })
             .catch(err => {
                 console.log(err)
                 console.log(err.message);
-            })
+        })       
     }
 }
 </script>
 
 <template>
     <div class="container">
-
         <div class="row py-4" v-if="apartments">
             <div class="card shadow p-5">
                 <h1 class="card-title">{{ apartments.title }}</h1>
@@ -137,12 +132,11 @@ export default {
                             </span>
                         </p>
                     </div>
+                    <MapMarker
+                    :lat="apartments.latitude"
+                    :lon="apartments.longitude"/>
                 </div>
             </div>
-
-        </div>
-        <div class="row">
-            <div id="map" style="height: 300px;" class="d-block mb-5"></div>
         </div>
     </div>
 </template>
