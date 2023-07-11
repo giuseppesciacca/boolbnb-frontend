@@ -11,7 +11,7 @@ export default {
             text_to_search: '',
             services: null,
             selected_service: [],
-            range: 10,
+            range: 20,
             rooms: 1,
             beds: 1
         }
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template>
-<!--     <div class="container mt-5">
+    <!--     <div class="container mt-5">
         <div class="text-center my-5">
             <input type="text" v-model="text_to_search" @keydown="filter_apartments_by_input()">
         </div>
