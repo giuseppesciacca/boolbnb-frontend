@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../assets/img/turanoresort.jpg" class="img-fluid" alt="...">
+                    <img src="../assets/img/casabarthel.jpg" class="img-fluid" alt="...">
                     <div class="carousel-caption d-md-block">
                         <h5>Feedback clienti</h5>
                         <p>Some representative placeholder content for the second slide.</p>
