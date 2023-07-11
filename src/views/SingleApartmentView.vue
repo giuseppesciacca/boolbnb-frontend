@@ -32,8 +32,9 @@ export default {
 
             const distance = r * c; // in metres
             const distanceInKm = distance / 1000;
+            const distanceInKmRounded = distanceInKm.toFixed(2)
 
-            return distanceInKm
+            return distanceInKmRounded
         }
 
     },
