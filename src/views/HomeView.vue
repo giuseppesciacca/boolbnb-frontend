@@ -25,58 +25,9 @@ export default {
         }
     },
     methods: {
-        tomtom() {
-            const ulElement = document.getElementById('list_address');
-
-            this.suggestions = []; //svuoto i suggestions
-            this.arrayAddressComplete = [] //svuoto l'array di indirizzi
-            ulElement.innerHTML = ''; //svuoto l'elemento <ul>
-
-            /* creazione endpoint */
-            const baseUrl = 'https://api.tomtom.com/search/2/search/';
-            const address = this.text_to_search + '.json?';
-            const keyTomTomAndTypeahead = 'key=VTS7KTu4nrOLxN010rCYu364QXAVRCfK&typeahead=true&language=it-IT&limit=5&countrySet=IT';
-            const endpoint = baseUrl + address + keyTomTomAndTypeahead;
-            /* **** */
-
-            if (this.text_to_search.length > 1) {
-                fetch(endpoint)
-                    .then(response => response.json())
-                    .then(data => {
-                        this.suggestions.push(data.results)
-
-                        this.suggestions.forEach(element => {
-                            //console.log(element);
-
-                            element.forEach(element_inside => {
-
-                                //console.log(element_inside);
-
-                                const addressComplete = element_inside.address.freeformAddress + ' ' + element_inside.position.lat + ' ' + element_inside.position.lon;
-
-                                this.arrayAddressComplete.push(addressComplete);
-                            });
-
-                            this.arrayAddressComplete.forEach(singleAddress => {
-                                const liEl = document.createElement('li');
-
-                                liEl.innerHTML = singleAddress; //metto ogni singolo indirizzo nei list item
-
-                                ulElement.append(liEl); //li appendo nell'ul
-
-                                liEl.addEventListener('click', function () {
-                                    //al click del suggerimento lo inserisce nell'input
-                                    this.text_to_search = liEl.childNodes[0].data
-                                })
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
-            };
-        },
-
+        /**
+         * 
+         */
         tomtom2() {
             const url = 'https://api.tomtom.com/search/2/geocode/';
             const address = this.text_to_convert + '.json'
@@ -96,6 +47,7 @@ export default {
                     }
                 })
                     .then(response => {
+                        //console.log(response);
                         console.log('Stai cercando la città di ' + response.data.results[0].address.municipality);
 
                         this.city = response.data.results[0].address.municipality;
@@ -136,7 +88,63 @@ export default {
                     }
                 });
             }
-        }
+        },
+        /**
+ * 
+ * @param {double} lat1 
+ * @param {double} lon1 
+ * @param {double} lat2 
+ * @param {double} lon2 
+ * @returns {float} distanza tra due lat e long
+ */
+        distanceBetweenTwoLatAndLog(lat1, lon1, lat2, lon2) {
+            const r = 6371000; // metres. raggio terrestre
+            const phi1 = lat1 * Math.PI / 180; // φ, λ in radians
+            const phi2 = lat2 * Math.PI / 180;
+            const deltaPhy = (lat2 - lat1) * Math.PI / 180;
+            const deltaLambda = (lon2 - lon1) * Math.PI / 180;
+
+            const a = Math.sin(deltaPhy / 2) * Math.sin(deltaPhy / 2) +
+                Math.cos(phi1) * Math.cos(phi2) *
+                Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            const distance = r * c; // in metres
+            const distanceInKm = distance / 1000;
+            const distanceInKmRounded = distanceInKm.toFixed(2)
+
+            return distanceInKmRounded
+        },
+        /**
+         * 
+         */
+        filter_apartments() {
+            if (this.all_apartments) {
+                this.apartments = []
+                this.all_apartments.forEach((apartment) => {
+
+                    if (this.range > this.distanceBetweenTwoLatAndLog(this.coordinate.latitude, this.coordinate.longitude, apartment.latitude, apartment.longitude)) {
+                        if (apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
+                            if (this.selected_service.length === 0) {
+                                this.apartments.push(apartment)
+                            } else {
+                                apartment.services.forEach(service => {
+                                    if (this.selected_service.includes(service.name)) {
+                                        if (!this.apartments.includes(apartment)) {
+                                            this.apartments.push(apartment)
+                                        }
+                                    }
+                                });
+                            }
+
+                        }
+                    }
+
+
+                });
+            }
+        },
+
     },
     mounted() {
         /**
@@ -153,7 +161,17 @@ export default {
             .catch(err => {
                 console.log(err)
                 console.log(err.message);
-            });
+            })
+
+        axios
+            .get(store.server + store.end_point_services)
+            .then(response => {
+                this.services = response.data.results
+            })
+            .catch(err => {
+                console.log(err)
+                console.log(err.message);
+            })
 
     },
 }
@@ -161,6 +179,41 @@ export default {
 
 <template>
     <div class="container mt-5">
+
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions">Filter</button>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <label for="rooms" class="me-2">Rooms</label>
+                    <input type="number" name="rooms" id="rooms" v-model="rooms">
+                </div>
+                <div class="my-2">
+                    <label for="beds" class="me-2">Beds</label>
+                    <input type="number" name="beds" id="beds" v-model="beds">
+                </div>
+                <div>
+                    <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
+                    <input type="range" name="raggio" id="raggio" min="1" max="20" v-model.number="range">
+                </div>
+                <div v-if="services" class="my-3">
+                    <div class="d-inline-block me-4" v-for="service in services">
+                        <label :for="service.name">{{ service.name }}</label>
+                        <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
+                            v-model="selected_service">
+                    </div>
+                </div>
+                <button class="d-block mb-3 btn btn-primary" @click="filter_apartments()">Cerca appartamento</button>
+            </div>
+        </div>
+
+
         <div class="text-center my-5">
 
             <p v-if="this.city == ''">
@@ -200,6 +253,14 @@ export default {
                         <h6 class="text-left fw-semibold">{{ apartment.title }}</h6>
                         <small>{{ apartment.address }}</small>
                     </div>
+
+                    <div v-if="this.city != ''">
+                        distanza tra la città {{ this.city }} e questo appartamento:
+                        {{ this.distanceBetweenTwoLatAndLog(this.coordinate.latitude, this.coordinate.longitude,
+                            apartment.latitude, apartment.longitude) }}
+                        km
+                    </div>
+                    <!--/ PROVA DISTANZA DAL SINGOLO APART -->
                 </div>
             </div>
         </div>
