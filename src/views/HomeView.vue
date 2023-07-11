@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template>
-    <div class="container mt-5">
+<!--     <div class="container mt-5">
         <div class="text-center my-5">
             <input type="text" v-model="text_to_search" @keydown="filter_apartments_by_input()">
         </div>
@@ -82,6 +82,9 @@ export default {
         <div v-else>
             <p class="text-center">Nessun appartamento trovato!</p>
         </div>
+    </div> -->
+    <div class="container">
+        <h1>to dev</h1>
     </div>
 </template>
 

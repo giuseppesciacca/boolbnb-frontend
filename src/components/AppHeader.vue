@@ -28,7 +28,7 @@ export default {
                 <ul class="navbar-nav gap-5">
                     <li class="nav-item px-5">
                         <router-link :to="{ 'name': 'apartments' }" class="nav-link">
-                            <span class="advanced-research">Ricerca Avanzata</span>
+                            <span class="apartments">Appartamenti</span>
                         </router-link>
                     </li>
                     <li class="nav-item px-5">
