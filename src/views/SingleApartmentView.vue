@@ -35,10 +35,25 @@ export default {
             axios
                 .post(store.server + store.end_point_messages, data)
                 .then(response => {
-                    console.log(response);
-                }).catch(err => {
-                    console.log(err);
+                    /*                     console.log(response); */
+                    if (!response.data.success) {
+                        this.errors = response.data.errors
+
+                    } else {
+                        this.name = '',
+                            this.surname = '',
+                            this.email = '',
+                            this.message = '',
+                            this.success = true
+                    }
+                    this.loading = false
+
                 })
+                .catch(err => {
+                    console.log(err);
+
+                })
+
         }
     },
 
@@ -55,7 +70,7 @@ export default {
             .catch(err => {
                 console.log(err)
                 console.log(err.message);
-        })       
+            })
     }
 }
 </script>
@@ -69,6 +84,7 @@ export default {
                     <img class="card-img-top" :src="`${store.server}storage/${apartments.image[0]}`" alt="Title">
                 </div>
                 <h4> {{ apartments.address }}</h4>
+
                 <div class="info d-flex justify-content-between">
                     <div class="primary-info d-flex flex-column w-75">
                         <h6>
@@ -85,6 +101,9 @@ export default {
                             <h4>
                                 Richiedi info sull'appartamento
                             </h4>
+                            <div class="alert alert-success" role="alert" v-if="success">
+                                <strong>Messaggio inviato!</strong> Presto riceverai una risposta
+                            </div>
                             <form @submit.prevent="submitForm(apartments.id)">
 
                                 <div class="mb-3">
@@ -93,12 +112,19 @@ export default {
                                         placeholder="Piermario Rossi" aria-describedby="nameHelper" v-model="name">
                                     <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
-
+                                <div class="alert alert-primary" role="alert" v-for="error in errors.name"
+                                    :key="`message-error-${index}`" :class="invalid - feedback">
+                                    <strong>{{ error }}</strong>
+                                </div>
                                 <div class="mb-3">
                                     <label for="surname" class="form-label">Cognome</label>
                                     <input type="text" name="surname" id="surname" class="form-control"
                                         placeholder="Piermario Rossi" aria-describedby="surnameHelper" v-model="surname">
                                     <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
+                                </div>
+                                <div class="alert alert-primary" role="alert" v-for="error in errors.surname"
+                                    :key="`message-error-${index}`" :class="invalid - feedback">
+                                    <strong>{{ error }}</strong>
                                 </div>
 
                                 <div class="mb-3">
@@ -108,14 +134,25 @@ export default {
                                         v-model="email">
                                     <small id="emailHelper" class="text-muted">Inserisci la tua email qui</small>
                                 </div>
+                                <div class="alert alert-primary" role="alert" v-for="error in errors.email"
+                                    :key="`message-error-${index}`" :class="invalid - feedback">
+                                    <strong>{{ error }}</strong>
+                                </div>
 
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Inserisci il tuo messaggio qui</label>
                                     <textarea class="form-control" name="message" id="message" rows="3"
                                         placeholder="Ciao vorrei contattarti in merito a..." v-model="message"></textarea>
                                 </div>
-
+                                <div class="alert alert-primary" role="alert" v-for="error in errors.message"
+                                    :key="`message-error-${index}`" :class="invalid - feedback">
+                                    <strong>{{ error }}</strong>
+                                </div>
+                                <div class="alert alert-success" role="alert" v-if="success">
+                                    <strong>Messaggio inviato!</strong> Presto riceverai una risposta
+                                </div>
                                 <button type="submit" class="btn btn-primary" :disable="loading">Invia</button>
+
                             </form>
 
                         </div>
@@ -129,9 +166,7 @@ export default {
                             </span>
                         </p>
                     </div>
-                    <MapMarker
-                    :lat="apartments.latitude"
-                    :lon="apartments.longitude"/>
+                    <MapMarker :lat="apartments.latitude" :lon="apartments.longitude" />
                 </div>
             </div>
         </div>
