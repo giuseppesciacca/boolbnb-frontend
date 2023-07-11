@@ -1,2 +1,5 @@
+@use '../assets/scss/partials/appHeader.scss';
+@use '../assets/scss/root.scss' as *;
+
 // Import all of Bootstrap's CSS
 @import "/node_modules/bootstrap/scss/bootstrap";
