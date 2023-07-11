@@ -11,7 +11,7 @@ export default {
             text_to_search: '',
             services: null,
             selected_service: [],
-            range: 10,
+            range: 20,
             rooms: 1,
             beds: 1
         }

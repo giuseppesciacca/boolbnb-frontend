@@ -11,7 +11,7 @@ export default {
             text_to_search: "",
             services: null,
             selected_service: [],
-            range: 10,
+            range: 20,
             rooms: 1,
             beds: 1,
             suggestions: [],
@@ -197,7 +197,7 @@ export default {
 
                 <div>
                     <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="20" v-model.number="range">
+                    <input type="range" name="raggio" id="raggio" min="1" max="40" v-model.number="range">
                 </div>
                 <div v-if="services" class="my-3">
                     <div class="d-inline-block me-4" v-for="service in services">
@@ -211,6 +211,7 @@ export default {
         </div>
 
         <div class="text-center my-5">
+            <label for="">Cerca per indirizzo o nome della casa</label> <br>
             <input type="text" v-model="text_to_search" @keydown="filter_apartments_by_input()">
         </div>
 
