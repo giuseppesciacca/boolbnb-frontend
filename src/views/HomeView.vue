@@ -26,9 +26,9 @@ export default {
     },
     methods: {
         /**
-         * 
+         * converte ciò che scriviamo nell'input in lat e lon
          */
-        tomtom2() {
+        convertInLatLog() {
             const url = 'https://api.tomtom.com/search/2/geocode/';
             const address = this.text_to_convert + '.json'
             const apiKey = 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr';
@@ -47,20 +47,12 @@ export default {
                     }
                 })
                     .then(response => {
-                        //console.log(response);
-                        console.log('Stai cercando la città di ' + response.data.results[0].address.municipality);
-
                         this.city = response.data.results[0].address.municipality;
 
-
-                        console.log(response.data.results[0].position.lat);
-                        console.log(response.data.results[0].position.lon);
                         this.coordinate = {
                             latitude: response.data.results[0].position.lat,
                             longitude: response.data.results[0].position.lon,
                         }
-
-                        console.log(this.coordinate);
                     })
                     .catch(error => {
                         console.error(error);
@@ -75,7 +67,7 @@ export default {
             apartment.selected = !apartment.selected;
         },
         /**
-         * 
+         * cerca ciò che scriviamo tra gli appartamenti, nel titolo e nell'indirizzo
          */
         filter_apartments_by_input() {
             if (this.all_apartments) {
@@ -90,13 +82,13 @@ export default {
             }
         },
         /**
- * 
- * @param {double} lat1 
- * @param {double} lon1 
- * @param {double} lat2 
- * @param {double} lon2 
- * @returns {float} distanza tra due lat e long
- */
+         * 
+         * @param {double} lat1 
+         * @param {double} lon1 
+         * @param {double} lat2 
+         * @param {double} lon2 
+         * @returns {float} distanza tra due lat e long in km
+         */
         distanceBetweenTwoLatAndLog(lat1, lon1, lat2, lon2) {
             const r = 6371000; // metres. raggio terrestre
             const phi1 = lat1 * Math.PI / 180; // φ, λ in radians
@@ -116,7 +108,7 @@ export default {
             return distanceInKmRounded
         },
         /**
-         * 
+         * filtro dei servizi e per range
          */
         filter_apartments() {
             if (this.all_apartments) {
@@ -139,12 +131,9 @@ export default {
 
                         }
                     }
-
-
                 });
             }
         },
-
     },
     mounted() {
         /**
@@ -172,7 +161,6 @@ export default {
                 console.log(err)
                 console.log(err.message);
             })
-
     },
 }
 </script>
@@ -213,7 +201,6 @@ export default {
             </div>
         </div>
 
-
         <div class="text-center my-5">
 
             <p v-if="this.city == ''">
@@ -224,21 +211,8 @@ export default {
             </p>
 
             <input type="text" name="address" id="address" class="form-control" placeholder="Dove vuoi andare?"
-                v-model="text_to_convert" aria-describedby="nameHelper" @keyup="tomtom2()">
-
-            <ul id="list_address" class="list-unstyled">
-            </ul>
+                v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()">
         </div>
-
-        <!--         
-        <div class="text-center my-5">
-            <label for="address" class="form-label">Dove vuoi andare?</label>
-            <input type="text" name="address" id="address" class="form-control" placeholder="Dove vuoi andare?"
-                v-model="text_to_search" aria-describedby="nameHelper" @keyup="tomtom()" v-on:keyup.enter="printlatlon()">
-
-            <ul id="list_address" class="list-unstyled">
-            </ul>
-        </div> -->
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
             <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
@@ -253,14 +227,6 @@ export default {
                         <h6 class="text-left fw-semibold">{{ apartment.title }}</h6>
                         <small>{{ apartment.address }}</small>
                     </div>
-
-                    <div v-if="this.city != ''">
-                        distanza tra la città {{ this.city }} e questo appartamento:
-                        {{ this.distanceBetweenTwoLatAndLog(this.coordinate.latitude, this.coordinate.longitude,
-                            apartment.latitude, apartment.longitude) }}
-                        km
-                    </div>
-                    <!--/ PROVA DISTANZA DAL SINGOLO APART -->
                 </div>
             </div>
         </div>
