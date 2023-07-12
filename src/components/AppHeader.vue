@@ -17,7 +17,7 @@ export default {
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between align-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li>
                         <router-link :to="{ 'name': 'home' }" class="nav-link">
@@ -25,7 +25,7 @@ export default {
                         </router-link>
                     </li>
                 </ul>
-                <ul class="navbar-nav gap-5">
+                <ul class="navbar-nav gap-md-5">
                     <li class="nav-item">
                         <router-link :to="{ 'name': 'apartments' }" class="nav-link">
                             <span class="animated-span">Appartamenti</span>
