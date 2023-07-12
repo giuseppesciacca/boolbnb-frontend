@@ -9,6 +9,7 @@ export default {
             apartments: [],
             all_apartments: null,
             text_to_search: "",
+            text_to_convert: "",
             services: null,
             selected_service: [],
             range: 20,
