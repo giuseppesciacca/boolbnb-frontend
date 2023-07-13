@@ -109,7 +109,7 @@ export default {
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nome</label>
                                     <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Piermario Rossi" aria-describedby="nameHelper" v-model="name">
+                                        placeholder="Piermario" aria-describedby="nameHelper" v-model="name">
                                     <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.name"
@@ -119,7 +119,7 @@ export default {
                                 <div class="mb-3">
                                     <label for="surname" class="form-label">Cognome</label>
                                     <input type="text" name="surname" id="surname" class="form-control"
-                                        placeholder="Piermario Rossi" aria-describedby="surnameHelper" v-model="surname">
+                                        placeholder="Rossi" aria-describedby="surnameHelper" v-model="surname">
                                     <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.surname"
@@ -142,7 +142,7 @@ export default {
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Inserisci il tuo messaggio qui</label>
                                     <textarea class="form-control" name="message" id="message" rows="3"
-                                        placeholder="Ciao vorrei contattarti in merito a..." v-model="message"></textarea>
+                                        placeholder="Ciao vorrei contattarti in merito all'appartamento..." v-model="message"></textarea>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.message"
                                     :key="`message-error-${index}`" :class="invalid - feedback">
