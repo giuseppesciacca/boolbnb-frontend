@@ -20,7 +20,7 @@ export default {
                         <img class="animated-img" src="../assets/logo.png" height=35 alt="boolbnb logo">
                     </router-link>
                 </li>
-                <li class="animated-li">
+                <li class="">
                     <span>Copyright&copy; 2023 tutti i diritti riservati</span>
                 </li>
                 <li class="animated-li">
