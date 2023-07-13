@@ -100,6 +100,10 @@ function consoleText(words, id, colors) {
                         aria-label="Slide 4"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
                         aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6"
+                        aria-label="Slide 7"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -147,6 +151,26 @@ function consoleText(words, id, colors) {
                             class="d-block w-100" alt="Roma">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>L'imponente monumento a Vittorio Emanuele II, Roma</h5>
+                            <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
+                                <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s1.1zoom.me/big0/221/France_Houses_People_Colmar_Canal_Waterfront_616121_1920x1200.jpg"
+                            class="d-block w-100" alt="Colmar">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Lungomare artificiale di Colmar, città nord-orientale della Francia</h5>
+                            <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
+                                <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s1.1zoom.me/big0/342/Greece_Villa_Evening_Houses_corfu_kaminaki_Pools_594552_1920x1200.jpg"
+                            class="d-block w-100" alt="Corfù">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>L'elegante Villa Kaminaki dell'isola di Corfù, in Grecia</h5>
                             <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
                                 <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
                             </router-link>
