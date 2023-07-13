@@ -4,6 +4,9 @@
     /* height: 90vh; */
     .container{
         height: calc(100vh - 82px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .hidden {
@@ -24,7 +27,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        margin: 450px auto;
+        margin: 0px auto;
     }
 
     .console-underscore {
