@@ -243,13 +243,3 @@ export default {
     </div>
 </div>
 </template>
-
-
-<!-- <style lang="scss" scoped>
-.fa-heart {
-    right: 20px;
-    top: 20px;
-    cursor: pointer;
-
-}
-</style> -->
