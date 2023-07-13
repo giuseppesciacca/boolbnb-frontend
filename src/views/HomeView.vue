@@ -31,12 +31,12 @@ export default {
 
 function consoleText(words, id, colors) {
     if (colors === undefined) colors = ['#222'];
-    var visible = true;
-    var con = document.getElementById('console');
-    var letterCount = 1;
-    var x = 1;
-    var waiting = false;
-    var target = document.getElementById(id)
+    let visible = true;
+    let con = document.getElementById('console');
+    let letterCount = 1;
+    let x = 1;
+    let waiting = false;
+    let target = document.getElementById(id)
     target.setAttribute('style', 'color:' + colors[0])
     window.setInterval(function () {
 
@@ -44,9 +44,9 @@ function consoleText(words, id, colors) {
             waiting = true;
             target.innerHTML = words[0].substring(0, letterCount)
             window.setTimeout(function () {
-                var usedColor = colors.shift();
+                let usedColor = colors.shift();
                 colors.push(usedColor);
-                var usedWord = words.shift();
+                let usedWord = words.shift();
                 words.push(usedWord);
                 x = 1;
                 target.setAttribute('style', 'color:' + colors[0])

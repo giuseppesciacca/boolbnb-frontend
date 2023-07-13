@@ -35,7 +35,6 @@ export default {
             axios
                 .post(store.server + store.end_point_messages, data)
                 .then(response => {
-                    /*                     console.log(response); */
                     if (!response.data.success) {
                         this.errors = response.data.errors
 
@@ -60,11 +59,18 @@ export default {
     mounted() {
         axios
             .get(store.server + store.end_point_apartments + this.$route.params.slug)
-            .then(response => {
-                this.apartments = response.data.result
-                this.position = {
+            .then((response) => {
+                if (response.data.success) {
+                    this.apartments = response.data.result
+                    this.position = {
                     lng: this.apartments.longitude,
                     lat: this.apartments.latitude
+                }
+                } else {
+                    this.$router.push({
+                        name: "error",
+                        params: { pathMatch: this.$route.path.substring(1).split("/") }
+                    });
                 }
             })
             .catch(err => {

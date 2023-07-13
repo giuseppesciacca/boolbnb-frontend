@@ -1,0 +1,36 @@
+@use "../root.scss" as *;
+
+#our-error {
+    height: calc(100vh - 149px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .hidden {
+        opacity: 0;
+    }
+
+    .console-container {
+
+        font-family: "Manrope";
+        font-size: 6rem;
+        text-align: center;
+        font-weight: 600;
+        max-height: 500px;
+        max-width: 1800px;
+        display: block;
+        color: $ourbnb-black;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0px auto;
+    }
+
+    .console-underscore {
+        display: inline-block;
+        position: relative;
+        top: -0.14em;
+        left: 10px;
+    }
+}
