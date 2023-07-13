@@ -96,6 +96,10 @@ function consoleText(words, id, colors) {
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -122,7 +126,27 @@ function consoleText(words, id, colors) {
                         <img src="https://s1.1zoom.me/b5050/538/Japan_Tokyo_Temples_Flowering_trees_Asakusa_Kannon_549958_1920x1200.jpg"
                             class="d-block w-100" alt="Tokyo">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Asakusa Kannon a Tokyo, in Giappone</h5>
+                            <h5>Il tempio Asakusa Kannon a Tokyo, in Giappone</h5>
+                            <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
+                                <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s1.1zoom.me/big0/725/USA_Houses_Skyscrapers_New_York_City_Manhattan_615289_1920x1200.jpg"
+                            class="d-block w-100" alt="New York">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Lo skyline notturno di Manhattan, a New York</h5>
+                            <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
+                                <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s1.1zoom.me/big3/565/Italy_Rome_Houses_Monuments_Milan_Monumento_a_615211_1920x1200.jpg"
+                            class="d-block w-100" alt="Roma">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>L'imponente monumento a Vittorio Emanuele II, Roma</h5>
                             <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
                                 <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
                             </router-link>

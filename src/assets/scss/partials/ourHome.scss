@@ -2,6 +2,9 @@
 
 #our-home {
     /* height: 90vh; */
+    .container{
+        height: calc(100vh - 82px);
+    }
 
     .hidden {
         opacity: 0;

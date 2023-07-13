@@ -63,9 +63,9 @@ export default {
                 if (response.data.success) {
                     this.apartments = response.data.result
                     this.position = {
-                    lng: this.apartments.longitude,
-                    lat: this.apartments.latitude
-                }
+                        lng: this.apartments.longitude,
+                        lat: this.apartments.latitude
+                    }
                 } else {
                     this.$router.push({
                         name: "error",
@@ -85,7 +85,7 @@ export default {
     <div class="container">
         <div class="row py-4" v-if="apartments">
             <div class="card shadow p-5">
-                <h1 class="card-title">{{ apartments.title }}</h1>
+                <h1 class="card-title text-center text-uppercase">{{ apartments.title }}</h1>
                 <div class="card p-2 m-4 shadow">
                     <img class="card-img-top" :src="`${store.server}storage/${apartments.image[0]}`" alt="Title">
                 </div>
@@ -102,20 +102,18 @@ export default {
                         <p class="card-text">Descrizione appartamento:</p>
                         <p>{{ apartments.description }}</p>
                     </div>
-                    <div class="form w-100">
+                    <div class="form w-50">
                         <div class="card p-3 m-4 shadow">
-                            <h4>
-                                Richiedi info sull'appartamento
-                            </h4>
+                            <h4 class="text-center mb-3 fw-semibold">Contatta l'host di questo boolbnb</h4>
                             <div class="alert alert-success" role="alert" v-if="success">
                                 <strong>Messaggio inviato!</strong> Presto riceverai una risposta
                             </div>
                             <form @submit.prevent="submitForm(apartments.id)">
 
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Nome</label>
-                                    <input type="text" name="name" id="name" class="form-control"
-                                        placeholder="Piermario" aria-describedby="nameHelper" v-model="name">
+                                    <label for="name" class="form-label">Nome:</label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Piermario"
+                                        aria-describedby="nameHelper" v-model="name">
                                     <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.name"
@@ -123,9 +121,9 @@ export default {
                                     <strong>{{ error }}</strong>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="surname" class="form-label">Cognome</label>
-                                    <input type="text" name="surname" id="surname" class="form-control"
-                                        placeholder="Rossi" aria-describedby="surnameHelper" v-model="surname">
+                                    <label for="surname" class="form-label">Cognome:</label>
+                                    <input type="text" name="surname" id="surname" class="form-control" placeholder="Rossi"
+                                        aria-describedby="surnameHelper" v-model="surname">
                                     <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.surname"
@@ -134,11 +132,11 @@ export default {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
+                                    <label for="email" class="form-label">E-Mail:</label>
                                     <input type="email" name="email" id="email" class="form-control"
-                                        placeholder="Piermariorossi@gmail.com" aria-describedby="emailHelper"
+                                        placeholder="piermariorossi@gmail.com" aria-describedby="emailHelper"
                                         v-model="email">
-                                    <small id="emailHelper" class="text-muted">Inserisci la tua email qui</small>
+                                    <small id="emailHelper" class="text-muted">Inserisci la tua e-mail qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.email"
                                     :key="`message-error-${index}`" :class="invalid - feedback">
@@ -146,15 +144,20 @@ export default {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="message" class="form-label">Inserisci il tuo messaggio qui</label>
+                                    <label for="message" class="form-label">Messaggio:</label>
                                     <textarea class="form-control" name="message" id="message" rows="3"
-                                        placeholder="Ciao vorrei contattarti in merito all'appartamento..." v-model="message"></textarea>
+                                        placeholder="Ciao vorrei contattarti in merito all'appartamento..."
+                                        v-model="message"></textarea>
+                                    <small id="messageHelper" class="text-muted">Inserisci il tuo messaggio qui</small>
                                 </div>
                                 <div class="alert alert-primary" role="alert" v-for="error in errors.message"
                                     :key="`message-error-${index}`" :class="invalid - feedback">
                                     <strong>{{ error }}</strong>
                                 </div>
-                                <button type="submit" class="btn btn-primary" :disable="loading">Invia</button>
+                                <div class="d-flex align-items-center gap-3">
+                                    <button type="submit" class="btn btn-primary" :disable="loading">Invia</button>
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
 
                             </form>
 
