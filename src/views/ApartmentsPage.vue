@@ -134,6 +134,12 @@ export default {
                 });
             }
         },
+        reset() {
+            this.rooms = 1,
+                this.beds = 1,
+                this.selected_service = []
+            this.range = 20
+        }
     },
     mounted() {
         axios
@@ -163,85 +169,86 @@ export default {
 </script>
 
 <template>
-<div id="all-apartments">
-    <div class="container mt-5">
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div>
-                    <label for="rooms" class="me-2">Rooms</label>
-                    <input type="number" name="rooms" id="rooms" v-model="rooms">
+    <div id="all-apartments">
+        <div class="container mt-5">
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri per l'appartamento che desideri cercare</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="my-2">
-                    <label for="beds" class="me-2">Beds</label>
-                    <input type="number" name="beds" id="beds" v-model="beds">
-                </div>
-
-                <div class="text-center my-2">
-
-                    <p v-if="this.city == ''">
-                        <label for="address" class="form-label">Dove vuoi andare?</label>
-                    </p>
-                    <p v-else>
-                        <label for="address" class="form-label">Stai cercando la città di {{ this.city }}?</label>
-                    </p>
-
-                    <input type="text" name="address" id="address" class="form-control" placeholder="Dove vuoi andare?"
-                        v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()">
-                </div>
-
-                <div>
-                    <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="40" v-model.number="range">
-                </div>
-                <div v-if="services" class="my-3">
-                    <div class="d-inline-block me-4" v-for="service in services">
-                        <label :for="service.name">{{ service.name }}</label>
-                        <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
-                            v-model="selected_service">
+                <div class="offcanvas-body">
+                    <div>
+                        <label for="rooms" class="me-2">Rooms</label>
+                        <input type="number" name="rooms" id="rooms" v-model="rooms">
                     </div>
+                    <div class="my-2">
+                        <label for="beds" class="me-2">Beds</label>
+                        <input type="number" name="beds" id="beds" v-model="beds">
+                    </div>
+
+                    <div class="text-center my-2">
+
+                        <p v-if="this.city == ''">
+                            <label for="address" class="form-label">Dove vuoi andare?</label>
+                        </p>
+                        <p v-else>
+                            <label for="address" class="form-label">Stai cercando nei dintorni di {{ this.city }}?</label>
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
+                        <input type="range" name="raggio" id="raggio" min="1" max="40" v-model.number="range">
+                    </div>
+                    <div v-if="services" class="my-3">
+                        <div class="d-inline-block me-4" v-for="service in services">
+                            <label :for="service.name">{{ service.name }}</label>
+                            <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
+                                v-model="selected_service">
+                        </div>
+                    </div>
+                    <button class="d-block mb-3 btn btn-primary" @click="filter_apartments()">Cerca appartamento</button>
+                    <button type="reset" class="btn btn-primary" @click="reset(), filter_apartments()">Reset</button>
                 </div>
-                <button class="d-block mb-3 btn btn-primary" @click="filter_apartments()">Cerca appartamento</button>
             </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="text-center mt-0 mb-4 search-box">
-                <button class="btn-search"><i class="fas fa-search"></i></button>
-                <input type="text" v-model="text_to_search" class="input-search" placeholder="Digita per cercare..."
-                    @keydown="filter_apartments_by_input()">
+            <div class="d-flex justify-content-center align-items-baseline">
+                <div class="text-center mt-0 mb-4 search-box">
+                    <button class="btn-search ms-5"><i class="fas fa-search"></i></button>
+                    <button class="btn-search me-5" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+                            class="fa-solid fa-plus"></i></button>
+                    <input type="text" name="address" id="address" class="input-search" placeholder="Dove vuoi andare?"
+                        v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()"
+                        @keydown="filter_apartments()">
+                </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-primary mb-5" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Filtro</button>
-        </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
-            <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
-                <div class="card multi-card g-3 h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
-<!--                     <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;"
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
+                <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
+                    <div class="card multi-card g-3 h-100 rounded-4 border-0 position-relative"
+                        :class="{ 'selected': apartment.selected }">
+                        <!--                     <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;"
                         :class="apartment.selected ? 'fa-solid' : ''" @click="select(apartment)"></i> -->
-                    <router-link class="text-decoration-none h-100 position-relative"
-                        :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
-                        <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
-                            :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                        <router-link class="text-decoration-none h-100 position-relative"
+                            :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
+                            <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                                :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
                             <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
-                    </router-link>
-                    <div class="card-body">
-                        <h6 class="h6-title">{{ apartment.title }}</h6>
-                        <h6 class="h6-address">{{ apartment.address }}</h6>
+                        </router-link>
+                        <div class="card-body">
+                            <h6 class="h6-title">{{ apartment.title }}</h6>
+                            <h6 class="h6-address">{{ apartment.address }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <p class="text-center">Nessun appartamento trovato!</p>
+            <div v-else>
+                <p class="text-center">Nessun appartamento trovato!</p>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 
