@@ -1,0 +1,43 @@
+@use "../root.scss" as *;
+
+.details-badge {
+    color: $ourbnb-white;
+    inset: auto auto 20px 20px;
+    font-size: 13px;
+    text-decoration: none;
+    position: absolute;
+    opacity: 0;
+    max-width: 80%;
+    transition: opacity .3s ease-out;
+    /*     text-shadow:
+        -1.2px 0px 0px $ourbnb-black,
+        1.2px 0px 0px $ourbnb-black,
+        0px -1.2px 0px $ourbnb-black,
+        0px 1.2px 0px $ourbnb-black; */
+}
+
+.multi-card:hover .details-badge {
+    opacity: 1;
+}
+
+.multi-card {
+    &:hover {
+        img {
+            filter: brightness(0.7);
+        }
+    }
+    .card-body{
+        h6{
+            font-size: 13px;
+        }
+        .h6-title{
+            font-weight: 600;
+        }
+        .h6-address{
+            color: $ourbnb-grey;
+        }
+    }
+}
+
+
+// Add something like badges hearth, crowns, ecc

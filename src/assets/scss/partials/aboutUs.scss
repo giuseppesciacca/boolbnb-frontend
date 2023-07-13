@@ -1,0 +1,77 @@
+@use "../root.scss" as *;
+
+.our-col {
+    border-radius: 8px;
+}
+
+.admin-pic {
+    border-radius: 50%;
+    width: 275px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    filter: drop-shadow(0 0 0.75rem $ourbnb-grey);
+
+    &:hover {
+        cursor: crosshair;
+    }
+}
+
+.our-quote {
+    font-family: 'Grape Nuts', cursive;
+    color: $ourbnb-light-grey;
+    transition: all 0.30s;
+}
+
+.our-name {
+    text-transform: uppercase;
+}
+
+.profile-container {
+    transition: all 0.65s;
+    padding: 15px;
+}
+
+.profile-container:hover {
+    background-color: $ourbnb-light-grey;
+    border-radius: 8px;
+}
+
+.profile-container:hover .our-quote {
+    color: $ourbnb-white;
+    text-shadow:
+    -1.2px 0px 0px $ourbnb-black,
+    1.2px 0px 0px $ourbnb-black,
+    0px -1.2px 0px $ourbnb-black,
+    0px 1.2px 0px $ourbnb-black;
+}
+
+.profile-container:hover .admin-pic {
+    transform: rotateY(360deg);
+    transition: all 0.65s;
+}
+
+.profile-container:nth-child(2),
+.profile-container:nth-child(4) {
+    flex-direction: row-reverse;
+
+    .profile-info {
+        align-items: end !important;
+    }
+
+}
+
+.linked-link {
+    color: $ourbnb-soft-black;
+}
+
+.fa-linkedin {
+    color: #0077b5;
+}
+
+.git-link {
+    color: $ourbnb-soft-black;
+}
+
+.fa-github {
+    color: #24292e;
+}

@@ -164,9 +164,6 @@ export default {
 
 <template>
     <div class="container mt-5">
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-            aria-controls="offcanvasWithBothOptions">Filtro</button>
-
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
@@ -210,25 +207,31 @@ export default {
                 <button class="d-block mb-3 btn btn-primary" @click="filter_apartments()">Cerca appartamento</button>
             </div>
         </div>
-
-        <div class="text-center my-5">
-            <label for="">Cerca per indirizzo o nome della casa</label> <br>
-            <input type="text" v-model="text_to_search" @keydown="filter_apartments_by_input()">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="text-center mt-0 mb-4 search-box">
+                <button class="btn-search"><i class="fas fa-search"></i></button>
+                <input type="text" v-model="text_to_search" class="input-search" placeholder="Digita per cercare..."
+                    @keydown="filter_apartments_by_input()">
+            </div>
         </div>
-
+        <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-primary mb-5" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Filtro</button>
+        </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
             <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
-                <div class="card h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
-                    <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;"
-                        :class="apartment.selected ? 'fa-solid' : ''" @click="select(apartment)"></i>
-                    <router-link class="text-decoration-none h-100"
+                <div class="card multi-card g-3 h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
+<!--                     <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;"
+                        :class="apartment.selected ? 'fa-solid' : ''" @click="select(apartment)"></i> -->
+                    <router-link class="text-decoration-none h-100 position-relative"
                         :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
                         <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
                             :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                            <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
                     </router-link>
                     <div class="card-body">
-                        <h6 class="text-left fw-semibold">{{ apartment.title }}</h6>
-                        <small>{{ apartment.address }}</small>
+                        <h6 class="h6-title">{{ apartment.title }}</h6>
+                        <h6 class="h6-address">{{ apartment.address }}</h6>
                     </div>
                 </div>
             </div>
@@ -240,17 +243,11 @@ export default {
 </template>
 
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 .fa-heart {
     right: 20px;
     top: 20px;
     cursor: pointer;
 
 }
-
-.fa-eye {
-    left: 20px;
-    top: 20px;
-    cursor: pointer;
-}
-</style>
+</style> -->
