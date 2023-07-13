@@ -174,7 +174,8 @@ export default {
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri per l'appartamento che desideri cercare</h5>
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri per l'appartamento che
+                        desideri cercare</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -213,16 +214,18 @@ export default {
                     <button type="reset" class="btn btn-primary" @click="reset(), filter_apartments()">Reset</button>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-baseline">
-                <div class="text-center mt-0 mb-4 search-box">
-                    <button class="btn-search ms-5"><i class="fas fa-search"></i></button>
-                    <button class="btn-search me-5" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
-                            class="fa-solid fa-plus"></i></button>
+            <div class="d-flex justify-content-center align-items-center my-4">
+                <div class="text-center mt-0 search-box">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
                     <input type="text" name="address" id="address" class="input-search" placeholder="Dove vuoi andare?"
                         v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()"
                         @keydown="filter_apartments()">
                 </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-4">
+                    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
+                            class="fa-solid fa-plus"></i></button>
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
