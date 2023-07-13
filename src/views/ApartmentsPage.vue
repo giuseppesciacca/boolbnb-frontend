@@ -163,6 +163,7 @@ export default {
 </script>
 
 <template>
+<div id="all-apartments">
     <div class="container mt-5">
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -240,6 +241,7 @@ export default {
             <p class="text-center">Nessun appartamento trovato!</p>
         </div>
     </div>
+</div>
 </template>
 
 

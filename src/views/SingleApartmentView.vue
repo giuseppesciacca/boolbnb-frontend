@@ -148,9 +148,6 @@ export default {
                                     :key="`message-error-${index}`" :class="invalid - feedback">
                                     <strong>{{ error }}</strong>
                                 </div>
-                                <div class="alert alert-success" role="alert" v-if="success">
-                                    <strong>Messaggio inviato!</strong> Presto riceverai una risposta
-                                </div>
                                 <button type="submit" class="btn btn-primary" :disable="loading">Invia</button>
 
                             </form>
