@@ -223,9 +223,8 @@ export default {
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center my-4">
-                    <button class="btn btn-danger" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i
-                            class="fa-solid fa-plus"></i></button>
+                    <button class="btn-1" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span>Filtri</span></button>
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">

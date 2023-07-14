@@ -154,13 +154,12 @@ export default {
                                     :key="`message-error-${index}`" :class="invalid - feedback">
                                     <strong>{{ error }}</strong>
                                 </div>
-                                <div class="d-flex align-items-center gap-3">
-                                    <button type="submit" class="btn btn-primary" :disable="loading">Invia</button>
-                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                <div class="d-flex align-items-center justify-content-end gap-3">
+                                    <button type="reset" class="btn-2">Reset</button>
+                                    <button type="submit" class="btn-1 btn-1-blue" :disable="loading">Invia</button>
+                                    
                                 </div>
-
                             </form>
-
                         </div>
                     </div>
                 </div>
