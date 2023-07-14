@@ -82,10 +82,11 @@ export default {
 </script>
 
 <template>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row py-4" v-if="apartments">
             <div class="card shadow p-5">
                 <h1 class="card-title text-center text-uppercase">{{ apartments.title }}</h1>
+                
                 <div class="card p-2 m-4 shadow">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                         <div class="carousel-indicators">
@@ -98,15 +99,11 @@ export default {
                             <div class="carousel-item active">
                                 <img :src="`${store.server}storage/${apartments.image[0]}`" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <img :src="`${store.server}storage/${apartments.image[1]}`" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
                                 </div>
                             </div>
                         </div>
@@ -122,11 +119,11 @@ export default {
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-            </div>
-            <h4> {{ apartments.address }}</h4>
-
-            <div class="info d-flex justify-content-between">
-                <div class="primary-info d-flex flex-column w-75">
+            
+                
+                <div class="info d-flex justify-content-between">
+                    <div class="primary-info d-flex flex-column w-75">
+                        <h4> {{ apartments.address }}</h4>
                     <h6>
                         <span class="badge bg-primary">{{ apartments.beds }}</span> Letti |
                         <span class="badge bg-primary">{{ apartments.bathrooms }}</span> Bagni |
@@ -208,7 +205,173 @@ export default {
             </div>
         </div>
     </div>
+    </div> -->
+
+    <div class="container my-5">
+        <div class="card p-3 shadow" v-if="apartments">
+            <div class="row row-cols-1 row-cols-sm-2 g-3">
+
+                <div class="col-auto position-relative">
+                    <div class="card p-2 shadow">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                            <div class="carousel-indicators">
+
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1">
+                                </button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                    aria-label="Slide 2">
+                                </button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img :src="`${store.server}storage/${apartments.image[0]}`" class="d-block w-100"
+                                        alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img :src="`${store.server}storage/${apartments.image[1]}`" class="d-block w-100"
+                                        alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="col-auto">
+                    <h1 class="card-title text-center text-uppercase">{{ apartments.title }}</h1>
+                    <div class="primary-info d-flex flex-column">
+                        <h4>Indirizzo: {{ apartments.address }}</h4>
+                        <div class="d-flex justify-content-between">
+                            <div class="me-3">
+                                <i class="fa-solid fa-house me-1"></i>
+                                <span class="badge btn-1 btn-1-blue align-bottom">{{ apartments.rooms }}</span>
+                                <span class="fw-light"> Stanze </span>
+                            </div>
+
+                            <div class="me-3">
+                                <i class="fa-solid fa-bed me-1"></i>
+                                <span class="badge btn-1 btn-1-blue align-bottom">{{ apartments.beds }}</span>
+                                <span class="fw-light"> Letti </span>
+                            </div>
+
+                            <div class="me-3">
+                                <i class="fa-solid fa-toilet-paper"></i>
+                                <span class="badge btn-1 btn-1-blue align-bottom">{{ apartments.bathrooms }}</span>
+                                <span class="fw-light"> Bagni </span>
+                            </div>
+
+
+                            <div class="me-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-rulers" viewBox="0 0 16 16">
+                                    <path
+                                        d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5v-1H2v-1h4v-1H4v-1h2v-1H2v-1h4V9H4V8h2V7H2V6h4V2h1v4h1V4h1v2h1V2h1v4h1V4h1v2h1V2h1v4h1V1a1 1 0 0 0-1-1H1z" />
+                                </svg>
+                                <span class="badge btn-1 btn-1-blue align-bottom">{{ apartments.square_meters }}</span>
+                                <span class="fw-light"> &#13217; </span>
+                            </div>
+                        </div>
+                        <p class="card-text m-0 mt-3">Descrizione appartamento:</p>
+                        <p class=" fw-light ">{{ apartments.description }}</p>
+                        <div class="card-footer px-2">
+                            Servizi:
+                            <div class="d-flex gap-1 flex-wrap">
+                                <p v-for="service in apartments.services">
+                                    <span class="badge rounded-pill text-bg-primary btn-1 btn-1-blue align-bottom">{{ service.name }}
+                                    </span>
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <MapMarker :lat="apartments.latitude" :lon="apartments.longitude" />
+                </div>
+
+                <div class="col-auto card shadow p-3">
+                    <h4 class="text-center mb-3 fw-semibold">Contatta l'host di questo boolbnb</h4>
+                        <div class="alert alert-success" role="alert" v-if="success">
+                            <strong>Messaggio inviato!</strong> Presto riceverai una risposta
+                        </div>
+                        <form @submit.prevent="submitForm(apartments.id)">
+
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nome:</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Piermario"
+                                    aria-describedby="nameHelper" v-model="name">
+                                <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
+                            </div>
+                            <div class="alert alert-primary" role="alert" v-for="error in errors.name"
+                                :key="`message-error-${index}`" :class="invalid - feedback">
+                                <strong>{{ error }}</strong>
+                            </div>
+                            <div class="mb-3">
+                                <label for="surname" class="form-label">Cognome:</label>
+                                <input type="text" name="surname" id="surname" class="form-control" placeholder="Rossi"
+                                    aria-describedby="surnameHelper" v-model="surname">
+                                <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
+                            </div>
+                            <div class="alert alert-primary" role="alert" v-for="error in errors.surname"
+                                :key="`message-error-${index}`" :class="invalid - feedback">
+                                <strong>{{ error }}</strong>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-Mail:</label>
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="piermariorossi@gmail.com" aria-describedby="emailHelper" v-model="email">
+                                <small id="emailHelper" class="text-muted">Inserisci la tua e-mail qui</small>
+                            </div>
+                            <div class="alert alert-primary" role="alert" v-for="error in errors.email"
+                                :key="`message-error-${index}`" :class="invalid - feedback">
+                                <strong>{{ error }}</strong>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Messaggio:</label>
+                                <textarea class="form-control" name="message" id="message" rows="3"
+                                    placeholder="Ciao vorrei contattarti in merito all'appartamento..."
+                                    v-model="message"></textarea>
+                                <small id="messageHelper" class="text-muted">Inserisci il tuo messaggio qui</small>
+                            </div>
+                            <div class="alert alert-primary" role="alert" v-for="error in errors.message"
+                                :key="`message-error-${index}`" :class="invalid - feedback">
+                                <strong>{{ error }}</strong>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end gap-3">
+                                <button type="reset" class="btn-2">Reset</button>
+                                <button type="submit" class="btn-1 btn-1-blue" :disable="loading">Invia</button>
+
+                            </div>
+                        </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </template>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    scale: 0.7;
+}
+</style>
