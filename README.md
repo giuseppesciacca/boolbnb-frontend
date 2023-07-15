@@ -3,15 +3,15 @@
 Benvenuti in questo repository dedicato alla replica di un sito che prende spunto da Airbnb, **BoolBnb!** Si tratta di un'impresa di gruppo che corona un intenso percorso di sei mesi di full immersion nel mondo dello **sviluppo web Full-Stack**. In questo repository troverete il prezioso codice sorgente che riguarda la **parte FRONT-END** di questo emozionante lavoro di gruppo.
 
 ## Il team 5 ha realizzato questo progetto
--  ### Luca Cirigliano
+-  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/) :linkedin:
  Full-Stack Web Developer
--  ### Luca Piacentini
+-  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) :linkedin:
  Full-Stack Web Developer | Chinesiologo
--  ### Carmelo Leone
+-  ### [Carmelo Leone](https://www.linkedin.com/in/leonecarmelo/) :linkedin:
  Full-Stack Web Developer | Chitarrista dei 7 black Sides
--  ### Domiziano De Santis
+-  ### [Domiziano De Santis](https://www.linkedin.com/in/domizianodesantis/) :linkedin:
  Full-Stack Web Developer
--  ### Giuseppe Sciacca
+-  ### [Giuseppe Sciacca](https://www.linkedin.com/in/giuseppe-s-b43079167/) :linkedin:
  Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
