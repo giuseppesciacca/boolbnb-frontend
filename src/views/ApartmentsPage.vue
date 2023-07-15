@@ -264,7 +264,7 @@ export default {
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
 
                 <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
-                    <div class="card multi-card h-100 rounded-4 border-0 position-relative"
+                    <div class="sponsored card multi-card h-100 rounded-4 border-0 position-relative"
                         :class="{ 'selected': apartment.selected }">
                         <i class="fa-solid fa-crown"></i>
                         <router-link class="text-decoration-none h-100 position-relative"
