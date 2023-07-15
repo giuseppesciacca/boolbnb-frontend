@@ -182,17 +182,18 @@ export default {
                     <input type="number" name="rooms" id="rooms" v-model="rooms">
                     <label for="rooms" class="ms-2"> Stanze</label>
                 </div>
-                <div class="my-2">
+                <div class="my-2 mb-5">
                     <i class="fa-solid fa-bed me-2"></i>
                     <input type="number" name="beds" id="beds" v-model="beds">
-                    <label for="beds" class="ms-2 mb-5">Letti</label>
+                    <label for="beds" class="ms-2">Letti</label>
                 </div>
 
                 <div>
-                    <label for="raggio" class="me-2 mb-3">Raggio kilometri {{ range }}</label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="40" v-model.number="range">
+                    <label for="raggio" class="me-2 mb-3">Raggio </label>
+                    <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-5" v-model.number="range">
+                   <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
                 </div>
-                <div v-if="services" class="my-3">
+                <div v-if="services" class="my-3 mb-4">
                     <div class="d-inline-block me-4" v-for="service in services">
                         <label :for="service.name">{{ service.name }}</label>
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
