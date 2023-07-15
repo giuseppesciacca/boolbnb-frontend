@@ -5,13 +5,14 @@ Benvenuti in questo repository dedicato alla replica di un sito che prende spunt
 ## Il team 5 ha realizzato questo progetto 📚
 -  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
  Full-Stack Web Developer
--  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) :linkedin:
+-  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) 
  Full-Stack Web Developer | Chinesiologo
 -  ### [Carmelo Leone](https://www.linkedin.com/in/leonecarmelo/) :linkedin:
  Full-Stack Web Developer | Chitarrista dei 7 black Sides
--  ### [Domiziano De Santis](https://www.linkedin.com/in/domizianodesantis/) :linkedin:
+-  ### [Domiziano De Santis](https://www.linkedin.com/in/domizianodesantis/) 
  Full-Stack Web Developer
--  ### [Giuseppe Sciacca](https://www.linkedin.com/in/giuseppe-s-b43079167/) :linkedin:
+-  ### [Giuseppe Sciacca](https://www.linkedin.com/in/giuseppe-s-b43079167/)
+  :linkedin:
  Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
