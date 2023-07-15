@@ -7,11 +7,11 @@ export default {
         return {
             store,
             apartments: [],
-            all_apartments: null,
+            all_apartments: [],
             all_apartments_sponsored: [],
             clean_apartments: [],
             text_to_convert: "",
-            services: null,
+            services: [],
             selected_service: [],
             range: 20,
             rooms: 1,
@@ -62,28 +62,6 @@ export default {
         },
         /**
          * 
-         * @param {*} apartment 
-         */
-        select(apartment) {
-            apartment.selected = !apartment.selected;
-        },
-        /**
-         * cerca ciò che scriviamo tra gli appartamenti, nel titolo e nell'indirizzo
-         */
-        filter_apartments_by_input() {
-            if (this.all_apartments) {
-                this.apartments = []
-
-                this.all_apartments.forEach((apartment) => {
-                    if (apartment.title.toLowerCase().includes(this.text_to_search.toLowerCase()) || apartment.address.toLowerCase().includes(this.text_to_search.toLowerCase())) {
-
-                        this.apartments.push(apartment)
-                    }
-                });
-            }
-        },
-        /**
-         * 
          * @param {double} lat1 
          * @param {double} lon1 
          * @param {double} lat2 
@@ -128,39 +106,79 @@ export default {
                                     }
                                 });
                             }
+                        }
+                    }
+                });
+            }
 
+            if (this.all_apartments_sponsored) {
+                this.clean_apartments = []
+                this.all_apartments_sponsored.forEach((apartment) => {
+                    if (this.range > this.distanceBetweenTwoLatAndLog(this.coordinate.latitude, this.coordinate.longitude, apartment.latitude, apartment.longitude) || this.text_to_convert == false) {
+                        if (apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
+                            if (this.selected_service.length === 0) {
+                                this.clean_apartments.push(apartment)
+                            } else {
+                                apartment.services.forEach(service => {
+                                    if (this.selected_service.includes(service.name)) {
+                                        if (!this.clean_apartments.includes(apartment)) {
+                                            this.clean_apartments.push(apartment)
+                                        }
+                                    }
+                                });
+                            }
                         }
                     }
                 });
             }
         },
-        reset() {
-            this.rooms = 1,
-                this.beds = 1,
-                this.selected_service = []
-            this.range = 20
+        /**
+         * resetta i filtri
+         */
+        resetFilter() {
+            this.rooms = 1;
+            this.beds = 1;
+            this.selected_service = [];
+            this.range = 20;
         },
-        filter1() {
-            this.clean_apartments = this.all_apartments.filter(element1 => {
+        /**
+         * remove Sponsored Apartment From All Apartments
+         * @returns Array apartments[]
+         */
+        removeSponsoredApartmentFromAllApartments() {
+            this.apartments = this.all_apartments.filter(element1 => {
                 return !this.all_apartments_sponsored.some(element2 => element2.title === element1.title);
             });
         },
+        /**
+         * clicca sullo span #suggestion_city per cambiare il value di input
+         */
+        changeInputValue() {
+            this.text_to_convert = this.city;
+        }
     },
     mounted() {
+        /**
+         * 
+         */
         axios
             .get(store.server + store.end_point_apartments)
             .then(response => {
                 this.apartments = response.data.results.data;
+                console.log(this.apartments);
                 this.all_apartments = response.data.all_apartments;
-                this.all_apartments_sponsored = response.data.all_apartments_sponsored.data
-                this.filter1()
-                console.log(this.all_apartments_sponsored)
+                this.all_apartments_sponsored = response.data.all_apartments_sponsored.data;
+                this.clean_apartments = response.data.all_apartments_sponsored.data;
+                this.removeSponsoredApartmentFromAllApartments()
             })
             .catch(err => {
                 console.log(err);
                 console.log(err.message);
             });
 
+        /**
+         * prende tutti i servizi e li mette in services[];
+         */
         axios
             .get(store.server + store.end_point_services)
             .then(response => {
@@ -177,7 +195,6 @@ export default {
 <template>
     <div class="container mt-5">
 
-
         <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
@@ -185,6 +202,7 @@ export default {
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
+
                 <div class="top-off-canvas d-flex flex-column justify-content-lg-between align-items-center">
                     <div class="range mb-3 d-flex align-items-center justify-content-center gap-2">
                         <label for="raggio">Raggio</label>
@@ -211,7 +229,7 @@ export default {
                 </div>
                 <div class="buttons text-center">
                     <button type="reset" class="btn-2 mt-1 mb-2 me-lg-2 me-md-2 me-sm-2 me-0"
-                        @click="reset()">Reset</button>
+                        @click="resetFilter()">Reset</button>
                     <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close"
                         @click="filter_apartments()">Cerca</button>
                 </div>
@@ -223,7 +241,10 @@ export default {
                 <label for="address" class="form-label mb-0">Dove vuoi andare?</label>
             </p>
             <p v-else class="m-0">
-                <label for="address" class="form-label mb-0">Stai cercando la città di {{ this.city }}?</label>
+                <label for="address" class="form-label mb-0">Stai cercando la città di <span id="suggestion_city"
+                        class="fs-5" @click="changeInputValue()">{{
+                            this.city }}</span>
+                    ?</label>
             </p>
             <div class="text-center my-2 d-inline-block mx-3">
                 <div class="text-center mt-0 search-box">
@@ -237,12 +258,10 @@ export default {
                 aria-controls="offcanvasWithBothOptions">Filtri</button>
         </div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="clean_apartments.length > 0">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
 
-
-            <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
-                <div class="card multi-card h-100 rounded-4 border-0 position-relative sponsored"
-                    :class="{ 'selected': apartment.selected }">
+            <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
+                <div class="card multi-card h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
                     <i class="fa-solid fa-crown"></i>
                     <router-link class="text-decoration-none h-100 position-relative"
                         :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
@@ -257,7 +276,7 @@ export default {
                 </div>
             </div>
 
-            <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
+            <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
                     :class="{ 'selected': apartment.selected }">
                     <router-link class="text-decoration-none h-100 position-relative"
@@ -274,6 +293,7 @@ export default {
             </div>
 
         </div>
+
         <div v-else>
             <p class="text-center">Nessun appartamento trovato!</p>
         </div>
