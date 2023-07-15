@@ -277,36 +277,43 @@ export default {
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
 
                 <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
-                    <div class="sponsored card multi-card h-100 rounded-4 border-0 position-relative"
-                        :class="{ 'selected': apartment.selected }">
-                        <i class="fa-solid fa-crown"></i>
-                        <router-link class="text-decoration-none h-100 position-relative"
-                            :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
-                            <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
-                                :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
-                            <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
-                        </router-link>
-                        <div class="card-body">
-                            <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
-                            <small class="text-secondary">{{ apartment.address }}</small>
+                    <div v-if="apartment.visibility === 1">
+                        <div class="sponsored card multi-card h-100 rounded-4 border-0 position-relative"
+                            :class="{ 'selected': apartment.selected }">
+                            <i class="fa-solid fa-crown"></i>
+                            <router-link class="text-decoration-none h-100 position-relative"
+                                :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
+                                <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                                <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
+                            </router-link>
+                            <div class="card-body">
+                                <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
+                                <small class="text-secondary">{{ apartment.address }}</small>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+
                 <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
-                    <div class="card multi-card h-100 rounded-4 border-0 position-relative"
-                        :class="{ 'selected': apartment.selected }">
-                        <router-link class="text-decoration-none h-100 position-relative"
-                            :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
-                            <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
-                                :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
-                            <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
-                        </router-link>
-                        <div class="card-body">
-                            <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
-                            <small class="text-secondary">{{ apartment.address }}</small>
+
+                    <div v-if="apartment.visibility === 1">
+                        <div class="card multi-card h-100 rounded-4 border-0 position-relative"
+                            :class="{ 'selected': apartment.selected }">
+                            <router-link class="text-decoration-none h-100 position-relative"
+                                :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
+                                <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                                <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
+                            </router-link>
+                            <div class="card-body">
+                                <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
+                                <small class="text-secondary">{{ apartment.address }}</small>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
