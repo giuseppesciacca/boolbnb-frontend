@@ -198,35 +198,33 @@ export default {
         <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri</h5>
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="top-off-canvas d-flex flex-md-row flex-column justify-content-lg-between align-items-center">
-                    <div class="range mb-3 align-items-baseline">
-                        <label for="raggio" class="me-2 mb-3">Raggio</label>
-                        <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
-                        <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
-                    </div>
 
-                    <div class="d-flex flex-column gap-2 ms-md-4">
-                        <div class="beds d-flex align-items-baseline">
-                            <i class="fa-solid fa-bed me-2"></i>
-                            <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
-                            <label for="beds" class="ms-2">Letti</label>
-                        </div>
-                        <div class="rooms d-flex align-items-baseline">
-                            <i class="fa-solid fa-house me-2"></i>
-                            <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
-                            <label for="rooms" class="ms-2"> Stanze</label>
-                        </div>
+                <div class="top-off-canvas d-flex flex-column justify-content-lg-between align-items-center">
+                    <div class="range mb-3 d-flex align-items-center justify-content-center gap-2">
+                        <label for="raggio">Raggio</label>
+                        <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
+                        <span class="h2">{{ range }}</span><span>Km</span>
+                    </div>
+                    <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
+                        <label for="rooms">Stanze</label>
+                    </div>
+                    <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
+                        <i class="fa-solid fa-bed"></i>
+                        <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
+                        <label for="beds">Letti</label>
                     </div>
                 </div>
                 <div v-if="services" class="my-3 mb-4 d-flex flex-column">
                     <div class="d-flex" v-for="service in services">
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
-                        <label class="ms-1" :for="service.name">{{ service.image }} {{ service.name }}</label>
+                        <label class="ms-1" :for="service.name"><i :class="service.image" class="me-1 fa-lg"></i>{{ service.name }}</label>  
                     </div>
                 </div>
                 <div class="buttons text-center">
@@ -251,7 +249,7 @@ export default {
             <div class="text-center my-2 d-inline-block mx-3">
                 <div class="text-center mt-0 search-box">
                     <button class="btn-search"><i class="fas fa-search" @click="filter_apartments()"></i></button>
-                    <input type="text" name="address" id="address" class="input-search" placeholder="Dove vuoi andare?"
+                    <input type="text" name="address" id="address" class="input-search" placeholder="Cerca una città..."
                         v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()"
                         @keydown.enter="filter_apartments()">
                 </div>
@@ -263,9 +261,8 @@ export default {
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
 
             <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
-                <div class="card multi-card h-100 rounded-4 border-0 position-relative"
-                    :class="{ 'selected': apartment.selected }">
-                    <i class="fa-solid fa-crown" style="color: #ffd700;"></i>
+                <div class="card multi-card h-100 rounded-4 border-0 position-relative" :class="{ 'selected': apartment.selected }">
+                    <i class="fa-solid fa-crown"></i>
                     <router-link class="text-decoration-none h-100 position-relative"
                         :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
                         <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
@@ -302,25 +299,3 @@ export default {
         </div>
     </div>
 </template>
-
-
-<style lang="scss" scoped>
-.fa-crown {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 10;
-    font-size: 1.25rem;
-    background-color: #313131;
-    padding: 0.75rem;
-    border-radius: 50%;
-}
-
-.offcanvas-body::-webkit-scrollbar {
-    display: none;
-}
-
-#suggestion_city {
-    cursor: pointer;
-}
-</style>

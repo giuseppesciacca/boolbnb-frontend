@@ -27,7 +27,10 @@
 .multi-card {
     &:hover {
         img {
-            filter: brightness(0.7);
+            filter: brightness(0.7);  
+        }
+        .fa-crown{
+            filter: brightness(0.8);
         }
     }
     .card-body{
@@ -43,5 +46,59 @@
     }
 }
 
+input[type=number] {
+	width: 3em;
+	padding: 0.5em;
+	border: .2em solid $ourbnb-red;
+	border-radius: 1em;
+	text-align: center;
+	color: $ourbnb-red;
+	appearance: textfield;
+	margin: 0;
+	&::-webkit-inner-spin-button {
+		opacity: 1;
+		background: $ourbnb-dark-red;
+	}
+}
 
-// Add something like badges hearth, crowns, ecc
+input[type=range] {
+	appearance: none;
+	background: transparent;
+	width: 8em;
+	@mixin slider-thumb {
+		appearance: none;
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 50%;
+		background: transparent;
+		border: .2em solid $ourbnb-soft-black;
+	}
+	@mixin slider-track {
+		background: $ourbnb-red;
+		width: 100%;
+		border-radius: 1vmin;
+		height: .5em;
+	}
+	&::-webkit-slider-thumb { margin-top: -8px; @include slider-thumb }
+	&::-moz-range-thumb { @include slider-thumb }
+	&::-ms-thumb { @include slider-thumb }
+	&::-webkit-slider-runnable-track { @include slider-track }
+	&::-moz-range-track { @include slider-track }
+	&::-ms-track { @include slider-track }
+}
+
+.control-div{
+    width: 260px;
+    .fa-solid{
+        width: 21px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    label{
+        width: 55px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+}

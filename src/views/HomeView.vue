@@ -189,20 +189,8 @@ function consoleText(words, id, colors) {
                 </button>
             </div>
         </div>
-        <div class="p-5 bg-light rounded-3 call-to-action text-center m-5">
-            <div class="container-fluid sponsored">
-
-                <h1 class="display-5 fw-bold">Sponsorizza il tuo appartamento</h1>
-                <p class="fs-4">Metti in risalto il tuo appartamento e fallo apparire prima degli altri</p>
-                <button class="btn-1" type="button"><a class="text-white" href="http://127.0.0.1:8000/register">Registra il
-                        tuo primo appartamento</a></button>
-
-
-            </div>
-        </div>
     </div>
 </template>
-
 
 <style lang="scss" scoped>
 @use '../styles/general.scss';
