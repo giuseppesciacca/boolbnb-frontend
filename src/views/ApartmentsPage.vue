@@ -171,14 +171,17 @@ export default {
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div>
-                    <label for="rooms" class="me-2">Rooms</label>
+                <div class="">
+                    <i class="fa-solid fa-house me-2"></i>
                     <input type="number" name="rooms" id="rooms" v-model="rooms">
+                    <label for="rooms" class="ms-2"> Stanze</label>
                 </div>
                 <div class="my-2">
-                    <label for="beds" class="me-2">Beds</label>
+                    <i class="fa-solid fa-bed me-2"></i>
                     <input type="number" name="beds" id="beds" v-model="beds">
+                    <label for="beds" class="ms-2 mb-5">Letti</label>
                 </div>
+
 
                 <div>
                     <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
