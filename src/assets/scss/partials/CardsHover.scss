@@ -102,3 +102,7 @@ input[type=range] {
         align-items: center;
     }
 }
+
+#apartments-page{
+    min-height: calc(100vh - 149px - 48px);
+}
