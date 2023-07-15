@@ -7,7 +7,7 @@ Benvenuti in questo repository dedicato alla replica di un sito che prende spunt
  Full-Stack Web Developer
 -  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) 
  Full-Stack Web Developer | Chinesiologo
--  ### [Carmelo Leone](https://www.linkedin.com/in/leonecarmelo/) :linkedin:
+-  ### [Carmelo Leone](https://www.linkedin.com/in/leonecarmelo/) 
  Full-Stack Web Developer | Chitarrista dei 7 black Sides
 -  ### [Domiziano De Santis](https://www.linkedin.com/in/domizianodesantis/) 
  Full-Stack Web Developer
