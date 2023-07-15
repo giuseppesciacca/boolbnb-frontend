@@ -9,7 +9,7 @@ LA PARTE FRONT-END di questo lavoro di gruppo.
 ### Domiziano De Santis | Full-Stack Web Developer
 ### Giuseppe Sciacca | Full-Stack Web Developer | Agronomo
 
-##Avviso importante
+## Avviso importante
 È fondamentale sottolineare che questo progetto è nato come parte di un percorso di apprendimento e non deve essere utilizzato per scopi commerciali o di produzione reale. Siamo orgogliosi del nostro lavoro, ma è importante fare attenzione all'uso appropriato di qualsiasi componente o concetto derivato da questo repository.
 ## Funzionalità principali
 
