@@ -15,7 +15,7 @@ export default {
         <div class="container">
             <div class="row">
                 <ul
-                    class="mb-0 mt-3 py-3 px-0 d-flex flex-column justify-content-center align-items-end gap-2 flex-md-row justify-content-lg-center list-unstyled gap-lg-5">
+                    class="mb-0 py-3 px-0 d-flex flex-column justify-content-center align-items-center gap-2 flex-md-row justify-content-lg-evenly list-unstyled">
                     <li>
                         <router-link :to="{ 'name': 'home' }" class="nav-link">
                             <img class="animated-img" src="../assets/logo-footer.png" height=35 alt="boolbnb logo">
@@ -31,7 +31,7 @@ export default {
                 </ul>
             </div>
         </div>
-        <div class=" copy text-white text-end pe-2">
+        <div class=" copy text-white text-start">
                 <span class="">Copyright&copy; 2023</span>
             </div>
     </footer>
