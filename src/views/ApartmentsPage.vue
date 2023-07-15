@@ -142,7 +142,7 @@ export default {
         },
         filter1() {
             this.clean_apartments = this.all_apartments.filter(element1 => {
-            return !this.all_apartments_sponsored.some(element2 => element2.title === element1.title);
+                return !this.all_apartments_sponsored.some(element2 => element2.title === element1.title);
             });
         },
     },
@@ -153,7 +153,7 @@ export default {
                 this.apartments = response.data.results.data;
                 this.all_apartments = response.data.all_apartments;
                 this.all_apartments_sponsored = response.data.all_apartments_sponsored.data
-                this.filter1() 
+                this.filter1()
                 console.log(this.all_apartments_sponsored)
             })
             .catch(err => {
@@ -178,40 +178,45 @@ export default {
     <div class="container mt-5">
 
 
-        <div class="offcanvas offcanvas-start w-50" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="">
-                    <i class="fa-solid fa-house me-2"></i>
-                    <input type="number" name="rooms" id="rooms" v-model="rooms">
-                    <label for="rooms" class="ms-2"> Stanze</label>
-                </div>
-                <div class="my-2 mb-5">
-                    <i class="fa-solid fa-bed me-2"></i>
-                    <input type="number" name="beds" id="beds" v-model="beds">
-                    <label for="beds" class="ms-2">Letti</label>
-                </div>
+                <div class="top-off-canvas d-flex flex-md-row flex-column justify-content-lg-between align-items-center">
+                    <div class="range mb-3 align-items-baseline">
+                        <label for="raggio" class="me-2 mb-3">Raggio </label>
+                        <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
+                        <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
+                    </div>
 
-                <div class="text-center">
-                    <label for="raggio" class="me-2 mb-3">Raggio </label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
-                   <span class="h1">{{ range }}</span><span class="ms-3">kilometri</span>
+                    <div class="d-flex flex-column gap-2 ms-md-4">
+                        <div class="beds d-flex align-items-baseline">
+                            <i class="fa-solid fa-bed me-2"></i>
+                            <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
+                            <label for="beds" class="ms-2">Letti</label>
+                        </div>
+                        <div class="rooms d-flex align-items-baseline">
+                            <i class="fa-solid fa-house me-2"></i>
+                            <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
+                            <label for="rooms" class="ms-2"> Stanze</label>
+                        </div>
+                    </div>
                 </div>
-                <div v-if="services" class="my-3 mb-4">
-                    <div class="d-inline-block" v-for="service in services">
-
+                <div v-if="services" class="my-3 mb-4 d-flex flex-column">
+                    <div class="d-flex" v-for="service in services">
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
-                            <label :for="service.name">{{ service.name }} {{ service.image }}</label>
+                        <label class="ms-1" :for="service.name">{{ service.image }} {{ service.name }}</label>
                     </div>
                 </div>
                 <div class="buttons text-center">
-                    <button type="reset" class="btn-2 mt-2" @click="reset()">Reset</button>
-                <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close" @click="filter_apartments()">Cerca</button>
+                    <button type="reset" class="btn-2 mt-1 mb-2 me-lg-2 me-md-2 me-sm-2 me-0"
+                        @click="reset()">Reset</button>
+                    <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close"
+                        @click="filter_apartments()">Cerca</button>
                 </div>
 
             </div>
@@ -236,7 +241,7 @@ export default {
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="clean_apartments.length > 0">
-            
+
 
             <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
@@ -280,7 +285,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.fa-crown{
+.fa-crown {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -291,4 +296,7 @@ export default {
     border-radius: 50%;
 }
 
+.offcanvas-body::-webkit-scrollbar {
+    display: none;
+}
 </style>
