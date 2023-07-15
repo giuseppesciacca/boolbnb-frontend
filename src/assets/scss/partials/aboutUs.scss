@@ -94,10 +94,10 @@
 .profile-container:hover .our-quote {
     color: $ourbnb-white;
     text-shadow:
-        -1.2px 0px 0px $ourbnb-black,
-        1.2px 0px 0px $ourbnb-black,
-        0px -1.2px 0px $ourbnb-black,
-        0px 1.2px 0px $ourbnb-black;
+        -0.7px 0px 0px $ourbnb-black,
+        0.7px 0px 0px $ourbnb-black,
+        0px -0.7px 0px $ourbnb-black,
+        0px 0.7px 0px $ourbnb-black;
 }
 
 .profile-container:hover .admin-pic {

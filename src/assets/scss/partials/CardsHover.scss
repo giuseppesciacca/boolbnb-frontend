@@ -27,7 +27,10 @@
 .multi-card {
     &:hover {
         img {
-            filter: brightness(0.7);
+            filter: brightness(0.7);  
+        }
+        .fa-crown{
+            filter: brightness(0.8);
         }
     }
     .card-body{

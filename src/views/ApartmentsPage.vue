@@ -222,7 +222,7 @@ export default {
             <div class="text-center my-2 d-inline-block mx-3">
                 <div class="text-center mt-0 search-box">
                     <button class="btn-search"><i class="fas fa-search" @click="filter_apartments()"></i></button>
-                    <input type="text" name="address" id="address" class="input-search" placeholder="Dove vuoi andare?"
+                    <input type="text" name="address" id="address" class="input-search" placeholder="Cerca una città..."
                         v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()"
                         @keydown.enter="filter_apartments()">
                 </div>
@@ -235,9 +235,9 @@ export default {
             
 
             <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
-                <div class="card multi-card h-100 rounded-4 border-0 position-relative"
+                <div class="card multi-card h-100 rounded-4 border-0 position-relative sponsored"
                     :class="{ 'selected': apartment.selected }">
-                    <i class="fa-solid fa-crown" style="color: #ffd700;"></i>
+                    <i class="fa-solid fa-crown"></i>
                     <router-link class="text-decoration-none h-100 position-relative"
                         :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
                         <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
@@ -273,18 +273,3 @@ export default {
         </div>
     </div>
 </template>
-
-
-<style lang="scss" scoped>
-.fa-crown{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 10;
-    font-size: 1.25rem;
-    background-color: #313131;
-    padding: 0.75rem;
-    border-radius: 50%;
-}
-
-</style>
