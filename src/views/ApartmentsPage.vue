@@ -8,6 +8,8 @@ export default {
             store,
             apartments: [],
             all_apartments: null,
+            all_apartments_sponsored: [],
+            clean_apartments: [],
             text_to_convert: "",
             services: null,
             selected_service: [],
@@ -138,15 +140,21 @@ export default {
                 this.selected_service = []
             this.range = 20
         },
+        filter1() {
+            this.clean_apartments = this.all_apartments.filter(element1 => {
+            return !this.all_apartments_sponsored.some(element2 => element2.title === element1.title);
+            });
+        },
     },
     mounted() {
         axios
             .get(store.server + store.end_point_apartments)
             .then(response => {
-                //console.log(response.data);
                 this.apartments = response.data.results.data;
                 this.all_apartments = response.data.all_apartments;
-                //console.log(this.all_apartments)
+                this.all_apartments_sponsored = response.data.all_apartments_sponsored.data
+                this.filter1() 
+                console.log(this.all_apartments_sponsored)
             })
             .catch(err => {
                 console.log(err);
@@ -170,10 +178,10 @@ export default {
     <div class="container mt-5">
 
 
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        <div class="offcanvas offcanvas-start w-75" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -195,7 +203,7 @@ export default {
                 </div>
                 <div v-if="services" class="my-3 mb-4">
                     <div class="d-inline-block me-4" v-for="service in services">
-                        <label :for="service.name">{{ service.name }}</label>
+                        <label :for="service.name">{{ service.name }} {{ service.image }}</label>
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
                     </div>
@@ -222,12 +230,14 @@ export default {
             <button class="btn-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions">Filtri</button>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
-            <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="clean_apartments.length > 0">
+            
+
+            <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
                     :class="{ 'selected': apartment.selected }">
-                    <!--                     <i class="fa-regular fa-heart fs-3 position-absolute" style="color: #ff0000;"
-                        :class="apartment.selected ? 'fa-solid' : ''" @click="select(apartment)"></i> -->
+                    <i class="fa-solid fa-crown" style="color: #ffd700;"></i>
                     <router-link class="text-decoration-none h-100 position-relative"
                         :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
                         <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
@@ -240,6 +250,23 @@ export default {
                     </div>
                 </div>
             </div>
+
+            <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
+                <div class="card multi-card h-100 rounded-4 border-0 position-relative"
+                    :class="{ 'selected': apartment.selected }">
+                    <router-link class="text-decoration-none h-100 position-relative"
+                        :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
+                        <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                            :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                        <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
+                    </router-link>
+                    <div class="card-body">
+                        <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
+                        <small class="text-secondary">{{ apartment.address }}</small>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div v-else>
             <p class="text-center">Nessun appartamento trovato!</p>
@@ -249,16 +276,15 @@ export default {
 
 
 <style lang="scss" scoped>
-.fa-heart {
-    right: 20px;
-    top: 20px;
-    cursor: pointer;
-
+.fa-crown{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+    font-size: 1.25rem;
+    background-color: #313131;
+    padding: 0.75rem;
+    border-radius: 50%;
 }
 
-.fa-eye {
-    left: 20px;
-    top: 20px;
-    cursor: pointer;
-}
 </style>
