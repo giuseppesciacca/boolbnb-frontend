@@ -132,6 +132,12 @@ export default {
                 });
             }
         },
+        reset() {
+            this.rooms = 1,
+                this.beds = 1,
+                this.selected_service = []
+            this.range = 20
+        },
     },
     mounted() {
         axios
