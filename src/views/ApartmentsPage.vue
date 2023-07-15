@@ -61,14 +61,14 @@ export default {
             }
         },
         /**
-         * 
+         * Deprecated
          * @param {*} apartment 
          */
         select(apartment) {
             apartment.selected = !apartment.selected;
         },
         /**
-         * cerca ciò che scriviamo tra gli appartamenti, nel titolo e nell'indirizzo
+         * cerca ciò che scriviamo tra gli appartamenti, nel titolo e nell'indirizzo. Deprecato
          */
         filter_apartments_by_input() {
             if (this.all_apartments) {
@@ -112,6 +112,8 @@ export default {
          * filtro dei servizi e per range
          */
         filter_apartments() {
+            //console.log(this.clean_apartments);
+            //console.log(this.apartments);
             if (this.all_apartments) {
                 this.apartments = []
                 this.all_apartments.forEach((apartment) => {
@@ -128,39 +130,58 @@ export default {
                                     }
                                 });
                             }
-
                         }
                     }
                 });
             }
         },
-        reset() {
-            this.rooms = 1,
-                this.beds = 1,
-                this.selected_service = []
-            this.range = 20
+        /**
+         * resetta i filtri
+         */
+        resetFilter() {
+            this.rooms = 1;
+            this.beds = 1;
+            this.selected_service = [];
+            this.range = 20;
         },
-        filter1() {
-            this.clean_apartments = this.all_apartments.filter(element1 => {
+        /**
+         * remove Sponsored Apartment From All Apartments
+         * @returns Array apartments[]
+         */
+        removeSponsoredApartmentFromAllApartments() {
+            this.apartments = this.all_apartments.filter(element1 => {
                 return !this.all_apartments_sponsored.some(element2 => element2.title === element1.title);
             });
         },
+        /**
+         * clicca sullo span #suggestion_city per cambiare il value di input
+         */
+        changeInputValue() {
+            this.text_to_convert = this.city;
+        }
     },
     mounted() {
+        /**
+         * 
+         */
         axios
             .get(store.server + store.end_point_apartments)
             .then(response => {
                 this.apartments = response.data.results.data;
+                console.log(this.apartments);
                 this.all_apartments = response.data.all_apartments;
                 this.all_apartments_sponsored = response.data.all_apartments_sponsored.data
-                this.filter1()
-                console.log(this.all_apartments_sponsored)
+                this.removeSponsoredApartmentFromAllApartments()
+                //console.log(this.all_apartments_sponsored)
             })
             .catch(err => {
                 console.log(err);
                 console.log(err.message);
             });
 
+        /**
+         * prende tutti i servizi e li mette in services[];
+         */
         axios
             .get(store.server + store.end_point_services)
             .then(response => {
@@ -177,7 +198,6 @@ export default {
 <template>
     <div class="container mt-5">
 
-
         <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
@@ -187,7 +207,7 @@ export default {
             <div class="offcanvas-body">
                 <div class="top-off-canvas d-flex flex-md-row flex-column justify-content-lg-between align-items-center">
                     <div class="range mb-3 align-items-baseline">
-                        <label for="raggio" class="me-2 mb-3">Raggio </label>
+                        <label for="raggio" class="me-2 mb-3">Raggio</label>
                         <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
                         <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
                     </div>
@@ -214,7 +234,7 @@ export default {
                 </div>
                 <div class="buttons text-center">
                     <button type="reset" class="btn-2 mt-1 mb-2 me-lg-2 me-md-2 me-sm-2 me-0"
-                        @click="reset()">Reset</button>
+                        @click="resetFilter()">Reset</button>
                     <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close"
                         @click="filter_apartments()">Cerca</button>
                 </div>
@@ -226,7 +246,10 @@ export default {
                 <label for="address" class="form-label mb-0">Dove vuoi andare?</label>
             </p>
             <p v-else class="m-0">
-                <label for="address" class="form-label mb-0">Stai cercando la città di {{ this.city }}?</label>
+                <label for="address" class="form-label mb-0">Stai cercando la città di <span id="suggestion_city"
+                        class="fs-5" @click="changeInputValue()">{{
+                            this.city }}</span>
+                    ?</label>
             </p>
             <div class="text-center my-2 d-inline-block mx-3">
                 <div class="text-center mt-0 search-box">
@@ -240,8 +263,7 @@ export default {
                 aria-controls="offcanvasWithBothOptions">Filtri</button>
         </div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="clean_apartments.length > 0">
-
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
 
             <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
@@ -260,7 +282,7 @@ export default {
                 </div>
             </div>
 
-            <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
+            <div class="col rounded-4 mb-4" v-for="apartment in apartments" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
                     :class="{ 'selected': apartment.selected }">
                     <router-link class="text-decoration-none h-100 position-relative"
@@ -277,9 +299,9 @@ export default {
             </div>
 
         </div>
-        <div v-else>
+        <!--         <div v-else>
             <p class="text-center">Nessun appartamento trovato!</p>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -298,5 +320,9 @@ export default {
 
 .offcanvas-body::-webkit-scrollbar {
     display: none;
+}
+
+#suggestion_city {
+    cursor: pointer;
 }
 </style>
