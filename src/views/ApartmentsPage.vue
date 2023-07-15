@@ -223,7 +223,7 @@ export default {
                         </div>
                     </div>
                     <div v-if="services" class="my-3 mb-4 d-flex flex-column">
-                        <div class="d-flex justify-content-start align-items-center gap-2" v-for="service in services">
+                        <div class="d-flex justify-content-start align-items-center gap-2 my-1" v-for="service in services">
                             <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                                 v-model="selected_service">
                             <label class="control-box d-flex justify-content-start align-items-center gap-2" :for="service.name"><i :class="service.image" class="me-1 fa-lg"></i>{{
