@@ -1,9 +1,9 @@
 # Progetto Full Stack - BoolBnb
 
 Benvenuti in questo repository dedicato alla replica di un sito che prende spunto da Airbnb, **BoolBnb!** Si tratta di un'impresa di gruppo che corona un intenso percorso di sei mesi di full immersion nel mondo dello **sviluppo web Full-Stack**. In questo repository troverete il prezioso codice sorgente che riguarda la **parte FRONT-END** di questo emozionante lavoro di gruppo.
-<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" style="margin-bottom: 5px;" />
-## Il team 5 ha realizzato questo progetto
--  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/ <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" style="margin-bottom: 5px;" />)
+
+## Il team 5 ha realizzato questo progetto 📚
+-  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
  Full-Stack Web Developer
 -  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) :linkedin:
  Full-Stack Web Developer | Chinesiologo
@@ -26,7 +26,7 @@ Il progetto include alcune delle funzionalità chiave, tra cui:
 - **Gestione delle prenotazioni**: gli host con appartamenti registrati possono ricevere messaggi di interesse dagli utenti tramite un form di contatto sulla pagina dell'appartamento.
 - **Sistema di sponsorizzazione**: gli host registrati possono scegliere di sponsorizzare i loro alloggi per 24, 72 o 144 ore. Con la sponsorizzazione, gli appartamenti vengono mostrati in cima alla lista nella visualizzazione degli appartamenti.
 
-## Tecnologie utilizzate
+## Tecnologie utilizzate 💻
 
 Il progetto è stato sviluppato utilizzando diverse tecnologie e framework per supportare lo sviluppo Full Stack:
 
@@ -38,4 +38,4 @@ Siamo entusiasti di condividere il nostro progetto Full Stack - BoolBnb
 
 Con Amore,
 Team 5.
-### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
+🌱
