@@ -3,19 +3,19 @@
 Benvenuti in questo repository dedicato alla replica di un sito che prende spunto da Airbnb, **BoolBnb!** Si tratta di un'impresa di gruppo che corona un intenso percorso di sei mesi di full immersion nel mondo dello **sviluppo web Full-Stack**. In questo repository troverete il prezioso codice sorgente che riguarda la **parte FRONT-END** di questo emozionante lavoro di gruppo.
 
 ## Il team 5 ha realizzato questo progetto
--  Luca Cirigliano:
--  Full-Stack Web Developer
--  Luca Piacentini:
--  Full-Stack Web Developer | Chinesiologo
--  Carmelo Leone:
--  Full-Stack Web Developer | Chitarrista dei 7 black Sides
--  Domiziano De Santis:
--  Full-Stack Web Developer
--  Giuseppe Sciacca:
--  Full-Stack Web Developer | Agronomo
+-  # Luca Cirigliano:
+ Full-Stack Web Developer
+-  # Luca Piacentini:
+ Full-Stack Web Developer | Chinesiologo
+-  # Carmelo Leone:
+ Full-Stack Web Developer | Chitarrista dei 7 black Sides
+-  # Domiziano De Santis:
+ Full-Stack Web Developer
+-  # Giuseppe Sciacca:
+ Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
-È fondamentale sottolineare che questo progetto è nato come parte di un percorso di apprendimento e non deve essere utilizzato per scopi commerciali o di produzione reale. Siamo orgogliosi del nostro lavoro, ma è importante fare attenzione all'uso appropriato di qualsiasi componente o concetto derivato da questo repository.
+È fondamentale sottolineare che questo progetto è nato come parte di un percorso di apprendimento. Siamo orgogliosi del nostro lavoro, ma è importante fare attenzione all'uso appropriato di qualsiasi componente o concetto derivato da questo repository.
 
 ## Funzionalità principali
 
@@ -34,4 +34,7 @@ Il progetto è stato sviluppato utilizzando diverse tecnologie e framework per s
 - **Backend**: Abbiamo utilizzato Laravel per creare il server backend e gestire le richieste API, l'archiviazione dei dati e l'interazione con il database.
 - **Mappe**: Abbiamo utilizzato TomTom per ottenere le coordinate geografiche a partire da un indirizzo e visualizzare il punto sulla mappa. [TomTom Developer](https://developer.tomtom.com/)
 
-Siamo entusiasti di condividere con voi il nostro progetto Full Stack - BoolBnb e speriamo che possa ispirare e stimolare il vostro interesse nello sviluppo web!
+Siamo entusiasti di condividere il nostro progetto Full Stack - BoolBnb
+
+Con Amore,
+Team 5.
