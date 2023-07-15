@@ -6,11 +6,21 @@ Benvenuti in questo repository dedicato alla replica di un sito ispirato ad Airb
 
 ## Il team 5 ha realizzato questo progetto 📚
 
-- Luca Cirigliano: Full-Stack Web Developer
-- Luca Piacentini: Full-Stack Web Developer | Chinesiologo
-- Carmelo Leone: Full-Stack Web Developer | Chitarrista dei 7 black Sides
-- Domiziano De Santis: Full-Stack Web Developer
-- Giuseppe Sciacca: Full-Stack Web Developer | Agronomo
+Luca Cirigliano
+Full-Stack Web Developer
+
+Luca Piacentini
+Full-Stack Web Developer | Chinesiologo
+
+Carmelo Leone 
+Carmelo Leone
+Full-Stack Web Developer | Chitarrista dei 7 black Sides
+
+Domiziano De Santis
+Full-Stack Web Developer
+
+Giuseppe Sciacca
+Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
 
