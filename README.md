@@ -38,4 +38,4 @@ Siamo entusiasti di condividere il nostro progetto Full Stack - BoolBnb
 
 Con Amore,
 Team 5.
-[## Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
+### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
