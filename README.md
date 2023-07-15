@@ -4,19 +4,19 @@ Benvenuti in questo repository dedicato alla replica di un sito ispirato ad Airb
 
 ## Il team 5 ha realizzato questo progetto 📚
 
-[Luca Cirigliano]()
+[Luca Cirigliano](https://github.com/L-cir94)
 Full-Stack Web Developer
 
-[Luca Piacentini]()
+[Luca Piacentini](https://github.com/LookasWasTaken)
 Full-Stack Web Developer | Chinesiologo
 
-[Carmelo Leone]() 
+[Carmelo Leone](https://github.com/LeoneCarmelo) 
 Full-Stack Web Developer | Chitarrista dei 7 black Sides
 
-[Domiziano De Santis](https://github.com/DeSantisDomiziano/DeSantisDomiziano)
+[Domiziano De Santis](https://github.com/DeSantisDomiziano)
 Full-Stack Web Developer
 
-[Giuseppe Sciacca]()
+[Giuseppe Sciacca](https://github.com/giuseppesciacca)
 Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
