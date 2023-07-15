@@ -188,6 +188,14 @@ function consoleText(words, id, colors) {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+            <div class="p-5 bg-light rounded-3 call-to-action text-center">
+                    <div class="container-fluid">
+                        <h1 class="display-5 fw-bold">Sponsorizza il tuo appartamento</h1>
+                        <p class="fs-4">Metti in risalto il tuo appartamento e fallo apparire prima degli altri</p>
+                        <button class="btn-1" type="button"><a class="text-white" href="http://127.0.0.1:8000/register">Registra il tuo primo appartamento</a></button>
+                        
+                    </div>
+                </div>
         </div>
     </div>
 </template>
