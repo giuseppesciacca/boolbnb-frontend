@@ -105,7 +105,7 @@ export default {
                             <div class="badge p-2 btn-1 me-3 d-flex justify-content-center align-items-center gap-2">
                                 <i class="fa-solid fa-toilet fa-lg"></i>
                                 <span class="align-bottom">{{ apartments.bathrooms }}</span>
-                                <span class="fw-light"> Bagni </span>
+                                <span class="fw-light">Bagni</span>
                             </div>
 
 

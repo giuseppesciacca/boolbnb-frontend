@@ -181,28 +181,25 @@ export default {
         <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri</h5>
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="top-off-canvas d-flex flex-md-row flex-column justify-content-lg-between align-items-center">
-                    <div class="range mb-3 align-items-baseline">
-                        <label for="raggio" class="me-2 mb-3">Raggio </label>
+                <div class="top-off-canvas d-flex flex-column justify-content-lg-between align-items-center">
+                    <div class="range mb-3 d-flex align-items-center justify-content-center gap-2">
+                        <label for="raggio">Raggio</label>
                         <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
-                        <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
+                        <span class="h2">{{ range }}</span><span>Km</span>
                     </div>
-
-                    <div class="d-flex flex-column gap-2 ms-md-4">
-                        <div class="beds d-flex align-items-baseline">
-                            <i class="fa-solid fa-bed me-2"></i>
-                            <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
-                            <label for="beds" class="ms-2">Letti</label>
-                        </div>
-                        <div class="rooms d-flex align-items-baseline">
-                            <i class="fa-solid fa-house me-2"></i>
-                            <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
-                            <label for="rooms" class="ms-2"> Stanze</label>
-                        </div>
+                    <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
+                        <i class="fa-solid fa-house"></i>
+                        <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
+                        <label for="rooms">Stanze</label>
+                    </div>
+                    <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
+                        <i class="fa-solid fa-bed"></i>
+                        <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
+                        <label for="beds">Letti</label>
                     </div>
                 </div>
                 <div v-if="services" class="my-3 mb-4 d-flex flex-column">
@@ -210,6 +207,7 @@ export default {
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
                         <label class="ms-1" :for="service.name">{{ service.name }}</label>
+                        <i class="fa-solid fa-dryer"></i>
                     </div>
                 </div>
                 <div class="buttons text-center">

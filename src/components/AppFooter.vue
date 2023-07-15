@@ -22,6 +22,9 @@ export default {
                         </router-link>
                     </li>
                     <li class="animated-li">
+                        <span>Copyright&copy; 2023 tutti i diritti riservati</span>
+                    </li>
+                    <li class="animated-li">
                         <a href="http://localhost:5174/about" target="_blank">Team Five</a>
                     </li>
                     <li class="animated-li">
@@ -31,8 +34,5 @@ export default {
                 </ul>
             </div>
         </div>
-        <div class=" copy text-white text-start">
-                <span class="">Copyright&copy; 2023</span>
-            </div>
     </footer>
 </template>
