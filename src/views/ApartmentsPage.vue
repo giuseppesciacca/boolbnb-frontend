@@ -209,7 +209,7 @@ export default {
                     <div class="d-flex" v-for="service in services">
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
-                        <label class="ms-1" :for="service.name">{{ service.image }} {{ service.name }}</label>
+                        <label class="ms-1" :for="service.name">{{ service.name }}</label>
                     </div>
                 </div>
                 <div class="buttons text-center">
