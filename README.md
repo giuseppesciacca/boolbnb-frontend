@@ -1,25 +1,22 @@
-Ecco alcune migliorie al file markdown di presentazione:
-
 # Progetto Full Stack - BoolBnb
 
 Benvenuti in questo repository dedicato alla replica di un sito ispirato ad Airbnb chiamato BoolBnb! Si tratta di un'impresa di gruppo che corona un intenso percorso di sei mesi di full immersion nel mondo dello sviluppo web Full-Stack. In questo repository troverete il codice sorgente relativo alla parte FRONT-END di questo emozionante lavoro di gruppo.
 
 ## Il team 5 ha realizzato questo progetto 📚
 
-Luca Cirigliano
+[Luca Cirigliano]()
 Full-Stack Web Developer
 
-Luca Piacentini
+[Luca Piacentini]()
 Full-Stack Web Developer | Chinesiologo
 
-Carmelo Leone 
-Carmelo Leone
+[Carmelo Leone]() 
 Full-Stack Web Developer | Chitarrista dei 7 black Sides
 
-Domiziano De Santis
+[Domiziano De Santis](https://github.com/DeSantisDomiziano/DeSantisDomiziano)
 Full-Stack Web Developer
 
-Giuseppe Sciacca
+[Giuseppe Sciacca]()
 Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
