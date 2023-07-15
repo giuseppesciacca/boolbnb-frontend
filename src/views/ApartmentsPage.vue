@@ -182,9 +182,8 @@ export default {
                     <label for="beds" class="ms-2 mb-5">Letti</label>
                 </div>
 
-
                 <div>
-                    <label for="raggio" class="me-2">Raggio kilometri {{ range }}</label>
+                    <label for="raggio" class="me-2 mb-3">Raggio kilometri {{ range }}</label>
                     <input type="range" name="raggio" id="raggio" min="1" max="40" v-model.number="range">
                 </div>
                 <div v-if="services" class="my-3">
@@ -194,6 +193,7 @@ export default {
                             v-model="selected_service">
                     </div>
                 </div>
+                <button type="reset" class="btn-2 me-3 mt-2" @click="reset()">Reset</button>
                 <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close" @click="filter_apartments()">Cerca appartamento</button>
             </div>
         </div>
