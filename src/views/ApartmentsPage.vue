@@ -7,11 +7,11 @@ export default {
         return {
             store,
             apartments: [],
-            all_apartments: null,
+            all_apartments: [],
             all_apartments_sponsored: [],
             clean_apartments: [],
             text_to_convert: "",
-            services: null,
+            services: [],
             selected_service: [],
             range: 20,
             rooms: 1,
@@ -61,28 +61,6 @@ export default {
             }
         },
         /**
-         * Deprecated
-         * @param {*} apartment 
-         */
-        select(apartment) {
-            apartment.selected = !apartment.selected;
-        },
-        /**
-         * cerca ciò che scriviamo tra gli appartamenti, nel titolo e nell'indirizzo. Deprecato
-         */
-        filter_apartments_by_input() {
-            if (this.all_apartments) {
-                this.apartments = []
-
-                this.all_apartments.forEach((apartment) => {
-                    if (apartment.title.toLowerCase().includes(this.text_to_search.toLowerCase()) || apartment.address.toLowerCase().includes(this.text_to_search.toLowerCase())) {
-
-                        this.apartments.push(apartment)
-                    }
-                });
-            }
-        },
-        /**
          * 
          * @param {double} lat1 
          * @param {double} lon1 
@@ -112,8 +90,6 @@ export default {
          * filtro dei servizi e per range
          */
         filter_apartments() {
-            //console.log(this.clean_apartments);
-            //console.log(this.apartments);
             if (this.all_apartments) {
                 this.apartments = []
                 this.all_apartments.forEach((apartment) => {
@@ -126,6 +102,27 @@ export default {
                                     if (this.selected_service.includes(service.name)) {
                                         if (!this.apartments.includes(apartment)) {
                                             this.apartments.push(apartment)
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (this.all_apartments_sponsored) {
+                this.clean_apartments = []
+                this.all_apartments_sponsored.forEach((apartment) => {
+                    if (this.range > this.distanceBetweenTwoLatAndLog(this.coordinate.latitude, this.coordinate.longitude, apartment.latitude, apartment.longitude) || this.text_to_convert == false) {
+                        if (apartment.rooms >= this.rooms && apartment.beds >= this.beds) {
+                            if (this.selected_service.length === 0) {
+                                this.clean_apartments.push(apartment)
+                            } else {
+                                apartment.services.forEach(service => {
+                                    if (this.selected_service.includes(service.name)) {
+                                        if (!this.clean_apartments.includes(apartment)) {
+                                            this.clean_apartments.push(apartment)
                                         }
                                     }
                                 });
@@ -170,9 +167,9 @@ export default {
                 this.apartments = response.data.results.data;
                 console.log(this.apartments);
                 this.all_apartments = response.data.all_apartments;
-                this.all_apartments_sponsored = response.data.all_apartments_sponsored.data
+                this.all_apartments_sponsored = response.data.all_apartments_sponsored.data;
+                this.clean_apartments = response.data.all_apartments_sponsored.data;
                 this.removeSponsoredApartmentFromAllApartments()
-                //console.log(this.all_apartments_sponsored)
             })
             .catch(err => {
                 console.log(err);
@@ -263,9 +260,9 @@ export default {
                 aria-controls="offcanvasWithBothOptions">Filtri</button>
         </div>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4" v-if="apartments.length > 0">
 
-            <div class="col rounded-4 mb-4" v-for="apartment in all_apartments_sponsored" :key="apartment.title">
+            <div class="col rounded-4 mb-4" v-for="apartment in clean_apartments" :key="apartment.title">
                 <div class="card multi-card h-100 rounded-4 border-0 position-relative"
                     :class="{ 'selected': apartment.selected }">
                     <i class="fa-solid fa-crown" style="color: #ffd700;"></i>
@@ -299,9 +296,10 @@ export default {
             </div>
 
         </div>
-        <!--         <div v-else>
+
+        <div v-else>
             <p class="text-center">Nessun appartamento trovato!</p>
-        </div> -->
+        </div>
     </div>
 </template>
 
