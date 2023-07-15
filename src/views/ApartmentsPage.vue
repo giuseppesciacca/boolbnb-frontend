@@ -196,7 +196,7 @@ export default {
     <div id="apartments-page">
         <div class="container mt-5">
 
-            <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            <div class="offcanvas offcanvas-start w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
@@ -204,7 +204,7 @@ export default {
                 </div>
                 <div class="offcanvas-body">
 
-                    <div class="top-off-canvas d-flex flex-column justify-content-lg-between align-items-center">
+                    <div class="top-off-canvas d-flex flex-column justify-content-lg-between align-items-start">
                         <div class="range mb-3 d-flex align-items-center justify-content-center gap-2">
                             <label for="raggio">Raggio</label>
                             <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3"
