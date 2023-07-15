@@ -1,9 +1,9 @@
 # Progetto Full Stack - BoolBnb
 
 Benvenuti in questo repository dedicato alla replica di un sito che prende spunto da Airbnb, **BoolBnb!** Si tratta di un'impresa di gruppo che corona un intenso percorso di sei mesi di full immersion nel mondo dello **sviluppo web Full-Stack**. In questo repository troverete il prezioso codice sorgente che riguarda la **parte FRONT-END** di questo emozionante lavoro di gruppo.
-
+<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" style="margin-bottom: 5px;" />
 ## Il team 5 ha realizzato questo progetto
--  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)(https://example.com/linkedin-icon.png)
+-  ### [Luca Cirigliano](https://www.linkedin.com/in/luca-cirigliano/)
  Full-Stack Web Developer
 -  ### [Luca Piacentini](https://www.linkedin.com/in/lucapiacentini/) :linkedin:
  Full-Stack Web Developer | Chinesiologo
