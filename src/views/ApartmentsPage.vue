@@ -191,7 +191,7 @@ export default {
                             v-model="selected_service">
                     </div>
                 </div>
-                <button class="btn-1" @click="filter_apartments()">Cerca appartamento</button>
+                <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close" @click="filter_apartments()">Cerca appartamento</button>
             </div>
         </div>
         <div class="mb-5 text-center">
