@@ -178,7 +178,7 @@ export default {
     <div class="container mt-5">
 
 
-        <div class="offcanvas offcanvas-start w-75" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        <div class="offcanvas offcanvas-start w-50" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
             aria-labelledby="offcanvasWithBothOptionsLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aggiungi filtri</h5>
@@ -196,20 +196,24 @@ export default {
                     <label for="beds" class="ms-2">Letti</label>
                 </div>
 
-                <div>
+                <div class="text-center">
                     <label for="raggio" class="me-2 mb-3">Raggio </label>
-                    <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-5" v-model.number="range">
-                   <span class="h2">{{ range }}</span><span class="ms-3">kilometri</span>
+                    <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3" v-model.number="range">
+                   <span class="h1">{{ range }}</span><span class="ms-3">kilometri</span>
                 </div>
                 <div v-if="services" class="my-3 mb-4">
-                    <div class="d-inline-block me-4" v-for="service in services">
-                        <label :for="service.name">{{ service.name }} {{ service.image }}</label>
+                    <div class="d-inline-block" v-for="service in services">
+
                         <input type="checkbox" class="ms-1" :value="service.name" :id="service.name"
                             v-model="selected_service">
+                            <label :for="service.name">{{ service.name }} {{ service.image }}</label>
                     </div>
                 </div>
-                <button type="reset" class="btn-2 me-3 mt-2" @click="reset()">Reset</button>
-                <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close" @click="filter_apartments()">Cerca appartamento</button>
+                <div class="buttons text-center">
+                    <button type="reset" class="btn-2 mt-2" @click="reset()">Reset</button>
+                <button class="btn-1" data-bs-dismiss="offcanvas" aria-label="Close" @click="filter_apartments()">Cerca</button>
+                </div>
+
             </div>
         </div>
         <div class="mb-5 text-center">
