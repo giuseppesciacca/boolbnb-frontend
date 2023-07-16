@@ -27,40 +27,6 @@ export default {
     },
     methods: {
         /**
-         * converte ciò che scriviamo nell'input in lat e lon
-         */
-        convertInLatLog() {
-            const url = 'https://api.tomtom.com/search/2/geocode/';
-            const address = this.text_to_convert + '.json'
-            const apiKey = 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr';
-            const apiKeyAndOption = 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr&limit=5&countrySet=IT&entityTypeSet=Municipality&extendedPostalCodesFor=Geo';
-            const urlComplete = url + address + apiKeyAndOption;
-
-            this.coordinate = {
-                latitude: Number,
-                longitude: Number,
-            }
-
-            if (this.text_to_convert.length > 2) {
-                axios.get(urlComplete, {
-                    params: {
-                        key: apiKey
-                    }
-                })
-                    .then(response => {
-                        this.city = response.data.results[0].address.municipality;
-
-                        this.coordinate = {
-                            latitude: response.data.results[0].position.lat,
-                            longitude: response.data.results[0].position.lon,
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        },
-        /**
          * 
          * @param {double} lat1 
          * @param {double} lon1 
@@ -86,9 +52,6 @@ export default {
 
             return distanceInKmRounded
         },
-        /**
-         * filtro dei servizi e per range
-         */
         /**
          * filtro dei servizi e per range
          */
@@ -168,6 +131,42 @@ export default {
         changeInputValue() {
             this.text_to_convert = this.city;
         }
+    },
+    computed: {
+        /**
+         * converte ciò che scriviamo nell'input in lat e lon
+         */
+        convertInLatLog: function () {
+            const url = 'https://api.tomtom.com/search/2/geocode/';
+            const address = this.text_to_convert + '.json'
+            const apiKey = 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr';
+            const apiKeyAndOption = 'vPuUkOEvt9S93r8E98XRbrHJJG1Mz6Tr&limit=5&countrySet=IT&entityTypeSet=Municipality&extendedPostalCodesFor=Geo';
+            const urlComplete = url + address + apiKeyAndOption;
+
+            this.coordinate = {
+                latitude: Number,
+                longitude: Number,
+            }
+
+            if (this.text_to_convert.length > 2) {
+                axios.get(urlComplete, {
+                    params: {
+                        key: apiKey
+                    }
+                })
+                    .then(response => {
+                        this.city = response.data.results[0].address.municipality;
+
+                        this.coordinate = {
+                            latitude: response.data.results[0].position.lat,
+                            longitude: response.data.results[0].position.lon,
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        },
     },
     mounted() {
         /**
@@ -266,7 +265,7 @@ export default {
                     <div class="text-center mt-0 search-box">
                         <button class="btn-search"><i class="fas fa-search" @click="filter_apartments()"></i></button>
                         <input type="text" name="address" id="address" class="input-search" placeholder="Cerca una città..."
-                            v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog()"
+                            v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog"
                             @keydown.enter="filter_apartments()">
                     </div>
                 </div>
