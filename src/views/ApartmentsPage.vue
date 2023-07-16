@@ -224,12 +224,12 @@ export default {
                             <span class="h2">{{ range }}</span><span>Km</span>
                         </div>
                         <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
-                            <i class="fa-solid fa-house"></i>
+                            <i class="fa-solid fa-house fa-lg"></i>
                             <input type="number" class="w-50" name="rooms" id="rooms" v-model="rooms">
                             <label for="rooms">Stanze</label>
                         </div>
                         <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
-                            <i class="fa-solid fa-bed"></i>
+                            <i class="fa-solid fa-bed fa-lg"></i>
                             <input type="number" class="w-50" name="beds" id="beds" v-model="beds">
                             <label for="beds">Letti</label>
                         </div>
