@@ -150,7 +150,7 @@ function consoleText(words, id, colors) {
                         <img src="https://s1.1zoom.me/big3/565/Italy_Rome_Houses_Monuments_Milan_Monumento_a_615211_1920x1200.jpg"
                             class="d-block w-100" alt="Roma">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>L'imponente monumento a Vittorio Emanuele II, Roma</h5>
+                            <h5>L'imponente monumento a Vittorio Emanuele II, a Roma</h5>
                             <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
                                 <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
                             </router-link>
@@ -160,7 +160,7 @@ function consoleText(words, id, colors) {
                         <img src="https://s1.1zoom.me/big0/221/France_Houses_People_Colmar_Canal_Waterfront_616121_1920x1200.jpg"
                             class="d-block w-100" alt="Colmar">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>Lungomare artificiale di Colmar, città nord-orientale della Francia</h5>
+                            <h5>Il lungomare artificiale di Colmar, città nord-orientale della Francia</h5>
                             <router-link :to="{ 'name': 'apartments' }" class="text-decoration-none">
                                 <span class="text-bnb">Questo e tanto altro su boolbnb!</span>
                             </router-link>
