@@ -208,7 +208,7 @@ export default {
     <div id="apartments-page">
         <div class="container mt-5">
 
-            <div class="offcanvas offcanvas-start w-25" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            <div class="offcanvas offcanvas-start w-18" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
@@ -289,6 +289,8 @@ export default {
                             </router-link>
                             <div class="card-body">
                                 <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
+                                <div>€{{ apartment.price }}<span class="fw-light"> a notte</span>
+                                </div>
                                 <small class="text-secondary">{{ apartment.address }}</small>
                             </div>
                         </div>
@@ -309,6 +311,8 @@ export default {
                             </router-link>
                             <div class="card-body">
                                 <h6 class="fs-6 fw-semibold">{{ apartment.title }}</h6>
+                                <div>€{{ apartment.price }}<span class="fw-light"> a notte</span>
+                                </div>
                                 <small class="text-secondary">{{ apartment.address }}</small>
                             </div>
                         </div>

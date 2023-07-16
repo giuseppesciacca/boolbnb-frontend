@@ -115,17 +115,19 @@ export default {
                                 <span class="fw-light">m²</span>
                             </div>
                         </div>
+                        <span class="mb-0 mt-3"><span class="fw-semibold">€{{ apartments.price }}</span> <span class="fw-light">a
+                                notte</span></span>
                         <div class="mt-3">
                             <p class="card-text mb-1 fs-5">Descrizione:</p>
                             <p class="fw-light">{{ apartments.description }}</p>
                         </div>
-                        <div class="card-footer px-2">
-                            <div class="d-flex gap-1 flex-wrap">
-                                <p v-for="service in apartments.services">
-                                    <span class="badge btn-1 btn-1-blue p-2">{{
-                                        service.name }}
-                                    </span>
-                                </p>
+                        <div class="card-footer px-0">
+                            <div class="d-flex gap-1 flex-wrap align-items-center">
+                                <div class="badge p-2 btn-1 btn-1-blue d-flex justify-content-center align-items-center gap-2"
+                                    v-for="service in apartments.services">
+                                    <i :class="service.image" class="fa-lg"></i>
+                                    <span class="fw-light">{{ service.name }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

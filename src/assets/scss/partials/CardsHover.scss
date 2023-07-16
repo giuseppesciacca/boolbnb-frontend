@@ -25,6 +25,9 @@
 }
 
 .multi-card {
+    img{
+        min-height: 230px !important;
+    }
     &:hover {
         img {
             filter: brightness(0.7);  
