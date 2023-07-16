@@ -207,7 +207,7 @@ export default {
     <div id="apartments-page">
         <div class="container mt-5">
 
-            <div class="offcanvas offcanvas-start w-18" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            <div class="offcanvas offcanvas-start w-auto" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
@@ -220,7 +220,7 @@ export default {
                             <label for="raggio">Raggio</label>
                             <input type="range" name="raggio" id="raggio" min="1" max="40" class="me-3"
                                 v-model.number="range">
-                            <span class="h2">{{ range }}</span><span>Km</span>
+                            <span class="h2 range-width">{{ range }}</span><span>Km</span>
                         </div>
                         <div class="control-div mb-3 d-flex align-items-center justify-content-between gap-2">
                             <i class="fa-solid fa-house fa-lg"></i>
