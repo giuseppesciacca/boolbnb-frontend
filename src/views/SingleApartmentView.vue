@@ -46,6 +46,7 @@ export default {
                             this.success = true
                     }
                     this.loading = false
+                    this.success = true
 
                 })
                 .catch(err => {
@@ -188,7 +189,7 @@ export default {
                     <h4 class="text-center mb-3 fw-semibold">Contatta l'host di questo <span
                             class="text-bool">boolbnb</span></h4>
                     <div class="alert alert-success" role="alert" v-if="success">
-                        <strong>Messaggio inviato!</strong> Presto riceverai una risposta
+                        <strong id="message_error">Messaggio inviato!</strong> Presto riceverai una risposta
                     </div>
                     <form @submit.prevent="submitForm(apartments.id)">
 
@@ -237,7 +238,7 @@ export default {
                         </div>
                         <div class="d-flex align-items-center justify-content-end gap-3">
                             <button type="reset" class="btn-2" @click="resetForm">Reset</button>
-                            <button type="submit" class="btn-1 btn-1-blue" :disable="loading" @click="resetForm">Invia</button>
+                            <button type="submit" class="btn-1 btn-1-blue" :disabled="success == true" @click="resetForm">Invia</button>
 
                         </div>
                     </form>
