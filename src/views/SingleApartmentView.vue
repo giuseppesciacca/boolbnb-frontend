@@ -53,6 +53,9 @@ export default {
 
                 })
 
+        },
+        resetForm() {
+            this.errors = {}
         }
     },
 
@@ -115,7 +118,8 @@ export default {
                                 <span class="fw-light">m²</span>
                             </div>
                         </div>
-                        <span class="mb-0 mt-3"><span class="fw-semibold">€{{ apartments.price }}</span> <span class="fw-light">a
+                        <span class="mb-0 mt-3"><span class="fw-semibold">€{{ apartments.price }}</span> <span
+                                class="fw-light">a
                                 notte</span></span>
                         <div class="mt-3">
                             <p class="card-text mb-1 fs-5">Descrizione:</p>
@@ -216,7 +220,7 @@ export default {
                             <small id="emailHelper" class="text-muted">Inserisci la tua e-mail qui</small>
                         </div>
                         <div class="alert alert-primary" role="alert" v-for="error in errors.email"
-                            :key="`message-error-${index}`" :class="invalid - feedback">
+                            v-if="errors.email && email === ''" :key="`message-error-${index}`" :class="invalid - feedback">
                             <strong>{{ error }}</strong>
                         </div>
 
@@ -232,8 +236,8 @@ export default {
                             <strong>{{ error }}</strong>
                         </div>
                         <div class="d-flex align-items-center justify-content-end gap-3">
-                            <button type="reset" class="btn-2">Reset</button>
-                            <button type="submit" class="btn-1 btn-1-blue" :disable="loading">Invia</button>
+                            <button type="reset" class="btn-2" @click="resetForm">Reset</button>
+                            <button type="submit" class="btn-1 btn-1-blue" :disable="loading" @click="resetForm">Invia</button>
 
                         </div>
                     </form>
