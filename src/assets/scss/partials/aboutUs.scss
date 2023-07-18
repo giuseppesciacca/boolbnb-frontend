@@ -1,0 +1,203 @@
+@use "../root.scss" as *;
+
+#about-view {
+    background-color: $ourbnb-light-grey;
+}
+
+.our-col {
+    border-radius: 8px;
+    background-color: $ourbnb-white;
+}
+
+.admin-pic {
+    border-radius: 50%;
+    width: 275px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    filter: drop-shadow(0 0 0.75rem $ourbnb-grey);
+
+    &:hover {
+        cursor: crosshair;
+    }
+}
+
+.our-quote {
+    font-family: 'Grape Nuts', cursive;
+    color: $ourbnb-grey;
+    transition: all 0.30s;
+}
+
+.our-name {
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 28px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 0.65s;
+
+    &:after,
+    &:before {
+        content: " ";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        border: 0px solid $ourbnb-white;
+        transition: all 0.65s;
+    }
+
+    &:after {
+        top: -1px;
+        left: -1px;
+        border-top: 5px solid $ourbnb-soft-black;
+        border-left: 5px solid $ourbnb-light-black;
+    }
+
+    &:before {
+        bottom: 1px;
+        right: 1px;
+        border-bottom: 5px solid $ourbnb-red;
+        border-right: 5px solid $ourbnb-soft-red;
+    }
+
+    .profile-container:hover &{
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+
+        // background:rgba(0,0,0,.5);
+        // color:white;
+        &:before,
+        &:after {
+
+            width: 100%;
+            height: 100%;
+            // border-color:white;
+        }
+        .suffix{
+            color: $ourbnb-red;
+            transition: all 0.65s ease-in;
+        }
+    }
+}
+
+.profile-container {
+    transition: all 0.65s;
+    padding: 15px;
+}
+
+.profile-container:hover {
+    background-color: $ourbnb-light-grey;
+    border-radius: 8px;
+}
+
+.profile-container:hover .our-quote {
+    color: $ourbnb-white;
+    text-shadow:
+        -0.7px 0px 0px $ourbnb-black,
+        0.7px 0px 0px $ourbnb-black,
+        0px -0.7px 0px $ourbnb-black,
+        0px 0.7px 0px $ourbnb-black;
+}
+
+.profile-container:hover .admin-pic {
+    transform: rotateY(360deg);
+    transition: all 0.65s;
+}
+
+.profile-container:nth-child(2),
+.profile-container:nth-child(4) {
+    flex-direction: row-reverse;
+
+    .profile-info {
+        align-items: end !important;
+    }
+
+}
+
+.linked-link {
+    color: $ourbnb-soft-black;
+}
+
+.fa-linkedin {
+    color: #0077b5;
+}
+
+.git-link {
+    color: $ourbnb-soft-black;
+}
+
+.fa-github {
+    color: #24292e;
+}
+
+.our-social {
+    a {
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+    }
+
+    a::before,
+    a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0;
+    }
+
+    a::before {
+        background-color: $ourbnb-red;
+        height: 2px;
+        bottom: 0;
+        transform-origin: 100% 50%;
+        transform: scaleX(0);
+        transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    a::after {
+        content: attr(data-replace);
+        height: 100%;
+        top: 0;
+        padding-left: 21px;
+        transform-origin: 100% 50%;
+        transform: translate3d(200%, 0, 0);
+        transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+        color: $ourbnb-red;
+    }
+
+    a:hover::before {
+        transform-origin: 0% 50%;
+        transform: scaleX(1);
+    }
+
+    a:hover::after {
+        transform: translate3d(0, 0, 0);
+    }
+
+    a span {
+        display: inline-block;
+        transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    a:hover span {
+        transform: translate3d(-200%, 0, 0);
+    }
+
+    /* Presentational Styles */
+    body {
+        display: grid;
+        font-family: 'Poppins', sans-serif;
+        font-size: 27px;
+        line-height: 1.5;
+        height: 100vh;
+        place-items: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: #18272F;
+        font-weight: 700;
+        vertical-align: top;
+    }
+}

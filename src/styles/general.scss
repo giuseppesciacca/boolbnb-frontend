@@ -1,2 +1,35 @@
+@use '../assets/scss/partials/appHeader.scss';
+@use '../assets/scss/partials/appFooter.scss';
+@use '../assets/scss/partials/searchButton.scss';
+@use '../assets/scss/partials/CardsHover.scss';
+@use '../assets/scss/partials/aboutUs.scss';
+@use '../assets/scss/partials/ourHome.scss';
+@use '../assets/scss/partials/ourError.scss';
+@use '../assets/scss/partials/singleCard.scss';
+@use '../assets/scss/root.scss' as *;
+
 // Import all of Bootstrap's CSS
 @import "/node_modules/bootstrap/scss/bootstrap";
+body{
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.text-bool{
+    color: $ourbnb-red;
+}
+
+a{
+    text-decoration: none;
+}
+
+.bg-grey{
+    background-color: $ourbnb-light-grey;
+}
+
+.range-width{
+    width: 40px;
+}

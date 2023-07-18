@@ -1,0 +1,196 @@
+@use "../root.scss" as *;
+
+/* #all-apartments {
+    background-color: $ourbnb-light-grey;
+} */
+
+.details-badge {
+    color: $ourbnb-white;
+    inset: auto auto 20px 20px;
+    font-size: 13px;
+    text-decoration: none;
+    position: absolute;
+    opacity: 0;
+    max-width: 80%;
+    transition: opacity .3s ease-out;
+    /*     text-shadow:
+        -1.2px 0px 0px $ourbnb-black,
+        1.2px 0px 0px $ourbnb-black,
+        0px -1.2px 0px $ourbnb-black,
+        0px 1.2px 0px $ourbnb-black; */
+}
+
+.multi-card:hover .details-badge {
+    opacity: 1;
+}
+
+.multi-card {
+    img {
+        min-height: 230px !important;
+    }
+
+    &:hover {
+        img {
+            filter: brightness(0.7);
+        }
+
+        .fa-crown {
+            filter: brightness(0.8);
+        }
+    }
+
+    .card-body {
+        h6 {
+            font-size: 13px;
+        }
+
+        .h6-title {
+            font-weight: 600;
+        }
+
+        .h6-address {
+            color: $ourbnb-grey;
+        }
+    }
+}
+
+input[type=number] {
+    width: 3em;
+    padding: 0.5em;
+    border: .2em solid $ourbnb-red;
+    border-radius: 1em;
+    text-align: center;
+    color: $ourbnb-soft-black;
+    appearance: textfield;
+    margin: 0;
+
+    &::-webkit-inner-spin-button {
+        opacity: 1;
+        background: $ourbnb-dark-red;
+    }
+}
+
+input[type=range] {
+    appearance: none;
+    background: transparent;
+    width: 8em;
+
+    @mixin slider-thumb {
+        appearance: none;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        background: transparent;
+        border: .2em solid $ourbnb-soft-black;
+    }
+
+    @mixin slider-track {
+        background: $ourbnb-red;
+        width: 100%;
+        border-radius: 1vmin;
+        height: .5em;
+    }
+
+    &::-webkit-slider-thumb {
+        margin-top: -8px;
+        @include slider-thumb
+    }
+
+    &::-moz-range-thumb {
+        @include slider-thumb
+    }
+
+    &::-ms-thumb {
+        @include slider-thumb
+    }
+
+    &::-webkit-slider-runnable-track {
+        @include slider-track
+    }
+
+    &::-moz-range-track {
+        @include slider-track
+    }
+
+    &::-ms-track {
+        @include slider-track
+    }
+}
+
+.control-div {
+    width: 260px;
+
+    .fa-solid {
+        width: 21px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    label {
+        width: 55px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+}
+
+#apartments-page {
+    min-height: calc(100vh - 149px - 48px);
+}
+
+#suggestion_city {
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    appearance: none;
+    background-color: $ourbnb-white;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid $ourbnb-soft-black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    &:hover{
+            border: 0.15em solid $ourbnb-red;
+            cursor: pointer;
+            transition: all 0.65s;
+    }
+
+    &::before {
+        content: "";
+        width: 0.65em;
+        height: 0.65em;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em $ourbnb-red;
+        background-color: CanvasText;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        transform-origin: left top;
+    }
+
+    &:checked::before {
+        transform: scale(1);
+    }
+}
+
+.control-box {
+    transition: all 0.65s;
+
+    .fa-solid {
+        width: 23px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &:hover {
+        color: $ourbnb-red;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,114 @@
+@use "../root.scss" as *;
+
+.btn-1:active,
+.btn-4:active {
+    scale: 0.7;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-1 {
+    color: $ourbnb-white;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid $ourbnb-white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    // margin: 0 20px;
+    border-radius: 5px;
+    background-color: $ourbnb-red;
+    font-weight: 600;
+}
+
+.btn-1-blue {
+    background-color: $ourbnb-blue !important;
+}
+
+.btn-1:before {
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background: $ourbnb-white;
+    left: -55px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+.btn-1:hover:before {
+    left: 95%;
+}
+
+.btn-1-black{
+    background-color: $ourbnb-soft-black !important;
+}
+
+.btn-2 {
+    color: $ourbnb-white;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid $ourbnb-white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    // margin: 0 20px;
+    border-radius: 5px;
+    background-color: $ourbnb-light-grey;
+    font-weight: 600;
+}
+
+.btn-2:before {
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 50px;
+    background: $ourbnb-white;
+    right: -40px;
+    top: -40px;
+    transform: rotate(37deg);
+    transition: all .3s;
+    opacity: 0.3;
+}
+
+.btn-2:hover:before {
+    right: 105%;
+}
+
+.sponsored:after {
+    content: "";
+    position: absolute;
+    height: 99px;
+    width: 32px;
+    background: $ourbnb-white;
+    right: -1px;
+    top: -30px;
+    transform: rotate(315deg);
+    transition: all 0.3s;
+    opacity: 0.3;
+}
+
+.fa-crown {
+    color: $ourbnb-gold;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    z-index: 10;
+    font-size: 1.25rem;
+    padding: 0.75rem;
+}
+
+.our-address{
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.card-footer{
+    background-color: $ourbnb-white !important;
+}
