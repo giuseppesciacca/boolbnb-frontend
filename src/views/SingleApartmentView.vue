@@ -199,7 +199,7 @@ export default {
                                 aria-describedby="nameHelper" v-model="name">
                             <small id="nameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                         </div>
-                        <div class="alert alert-primary" role="alert" v-for="error in errors.name"
+                        <div class="alert alert-danger" role="alert" v-for="error in errors.name"
                             :key="`message-error-${index}`" :class="invalid - feedback">
                             <strong>{{ error }}</strong>
                         </div>
@@ -209,7 +209,7 @@ export default {
                                 aria-describedby="surnameHelper" v-model="surname">
                             <small id="surnameHelper" class="text-muted">Inserisci il tuo nome qui</small>
                         </div>
-                        <div class="alert alert-primary" role="alert" v-for="error in errors.surname"
+                        <div class="alert alert-danger" role="alert" v-for="error in errors.surname"
                             :key="`message-error-${index}`" :class="invalid - feedback">
                             <strong>{{ error }}</strong>
                         </div>
@@ -220,7 +220,7 @@ export default {
                                 placeholder="piermariorossi@gmail.com" aria-describedby="emailHelper" v-model="email">
                             <small id="emailHelper" class="text-muted">Inserisci la tua e-mail qui</small>
                         </div>
-                        <div class="alert alert-primary" role="alert" v-for="error in errors.email"
+                        <div class="alert alert-danger" role="alert" v-for="error in errors.email"
                             v-if="errors.email && email === ''" :key="`message-error-${index}`" :class="invalid - feedback">
                             <strong>{{ error }}</strong>
                         </div>
@@ -232,7 +232,7 @@ export default {
                                 v-model="message"></textarea>
                             <small id="messageHelper" class="text-muted">Inserisci il tuo messaggio qui</small>
                         </div>
-                        <div class="alert alert-primary" role="alert" v-for="error in errors.message"
+                        <div class="alert alert-danger" role="alert" v-for="error in errors.message"
                             :key="`message-error-${index}`" :class="invalid - feedback">
                             <strong>{{ error }}</strong>
                         </div>
