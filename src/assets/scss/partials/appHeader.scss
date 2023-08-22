@@ -1,14 +1,18 @@
 @use "../root.scss" as *;
 
+nav {
+    height: 82px;
+}
+
 .animated-img {
     transition: all 0.3s ease-in-out;
 }
 
-.animated-img:hover{
+.animated-img:hover {
     transform: scale(1.1);
 }
 
-.animated-img:active{
+.animated-img:active {
     transform: scale(0.8);
 }
 
@@ -48,7 +52,7 @@
     width: 100%;
 }
 
-.animated-span:active{
+.animated-span:active {
     transition: all 0.1s ease-in-out;
     transform: scale(0.8);
 }
