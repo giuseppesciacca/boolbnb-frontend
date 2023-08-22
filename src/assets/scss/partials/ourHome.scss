@@ -1,8 +1,9 @@
 @use "../root.scss" as *;
 
 #our-home {
+
     /* height: 90vh; */
-    .container{
+    .container {
         height: calc(100vh - 82px);
         display: flex;
         justify-content: center;
@@ -38,10 +39,18 @@
     }
 }
 
+.carousel-inner {
+    max-height: 100vh;
+}
+
 .carousel-item {
+    max-height: 100vh;
+    background-color: $ourbnb-black;
+
     img {
-        object-fit: contain;
+        object-fit: cover;
         margin: auto;
+        height: 100vh;
     }
 
     .text-bnb {
@@ -63,8 +72,9 @@
     width: 5rem !important;
     height: 5rem !important;
 }
-.call-to-action{
-    a{
+
+.call-to-action {
+    a {
         text-decoration: none;
     }
 }
