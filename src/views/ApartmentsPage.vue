@@ -263,7 +263,8 @@ export default {
                 </p>
                 <div class="text-center my-2 d-inline-block mx-3">
                     <div class="text-center mt-0 search-box">
-                        <button class="btn-search"><i class="fas fa-search" @click="filter_apartments()"></i></button>
+                        <button class="btn-search" aria-label="search button"><i class="fas fa-search"
+                                @click="filter_apartments()"></i></button>
                         <input type="text" name="address" id="address" class="input-search" placeholder="Cerca una città..."
                             v-model="text_to_convert" aria-describedby="nameHelper" @keyup="convertInLatLog"
                             @keydown.enter="filter_apartments()">
@@ -282,8 +283,9 @@ export default {
                             <i class="fa-solid fa-crown"></i>
                             <router-link class="text-decoration-none h-100 position-relative"
                                 :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
-                                <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
-                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                                <img fetchpriority="high"
+                                    class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.title">
                                 <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
                             </router-link>
                             <div class="card-body">
@@ -304,8 +306,8 @@ export default {
                             :class="{ 'selected': apartment.selected }">
                             <router-link class="text-decoration-none h-100 position-relative"
                                 :to="{ name: 'single-apartment', params: { 'slug': apartment.slug } }">
-                                <img class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
-                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.name">
+                                <img loading="lazy" class="card-img-top w-100 h-100 object-fit-cover rounded-4 shadow-lg"
+                                    :src="`${store.server}storage/${apartment.image[0]}`" :alt="apartment.title">
                                 <p class="mb-0 details-badge">Vai ai dettagli... <i class="fa-solid fa-arrow-right"></i></p>
                             </router-link>
                             <div class="card-body">

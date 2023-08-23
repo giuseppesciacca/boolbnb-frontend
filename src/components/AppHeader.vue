@@ -17,12 +17,13 @@ export default {
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <img class="animated-img d-lg-none d-md-none d-sm-flex" src="../assets/logo.png" height=50 alt="boolbnb logo">
+            <img class="animated-img d-lg-none d-md-none d-sm-flex" src="../assets/logo.png" height=50 width=110
+                alt="boolbnb logo">
             <div class="collapse navbar-collapse justify-content-between align-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav d-lg-flex d-md-flex d-none">
                     <li>
                         <router-link :to="{ 'name': 'home' }" class="nav-link">
-                            <img class="animated-img" src="../assets/logo.png" height=50 alt="boolbnb logo">
+                            <img class="animated-img" src="../assets/logo.png" height=50 width=110 alt="boolbnb logo">
                         </router-link>
                     </li>
                 </ul>
@@ -40,7 +41,8 @@ export default {
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="animated-span" :href="store.server + store.admin"><i class="fa-solid fa-user-gear"></i> Area Personale</a>
+                        <a class="animated-span" :href="store.server + store.admin"><i class="fa-solid fa-user-gear"></i>
+                            Area Personale</a>
                     </li>
                 </ul>
             </div>
