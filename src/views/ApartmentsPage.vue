@@ -204,7 +204,6 @@ export default {
       .get(store.server + store.api_get.end_point_apartments)
       .then((response) => {
         this.apartments = response.data.results.data;
-        console.log(this.apartments);
         this.all_apartments = response.data.all_apartments;
         this.all_apartments_sponsored =
           response.data.all_apartments_sponsored.data;
@@ -212,8 +211,8 @@ export default {
         this.removeSponsoredApartmentFromAllApartments();
       })
       .catch((err) => {
-        console.log(err);
-        console.log(err.message);
+        console.error(err);
+        console.error(err.message);
       });
 
     /**
@@ -225,8 +224,8 @@ export default {
         this.services = response.data.results;
       })
       .catch((err) => {
-        console.log(err);
-        console.log(err.message);
+        console.error(err);
+        console.error(err.message);
       });
   },
 };

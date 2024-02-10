@@ -1,34 +1,12 @@
 <script>
-import { store } from "../store.js";
-import axios from "axios";
 export default {
   name: "HomeView",
-  data() {
-    return {
-      store,
-      apartments: [],
-      all_apartments: null,
-    };
-  },
-  methods: {},
   mounted() {
     consoleText(["Boolbnb.", "by Team Five.", "with Love."], "text", [
       "#ff5a5f",
       "rebeccapurple",
       "lightblue",
     ]);
-    axios
-      .get(store.server + store.api_get.end_point_apartments)
-      .then((response) => {
-        //console.log(response.data);
-        this.apartments = response.data.results.data;
-        this.all_apartments = response.data.all_apartments;
-        //console.log(this.all_apartments)
-      })
-      .catch((err) => {
-        console.log(err);
-        console.log(err.message);
-      });
   },
 };
 
@@ -88,11 +66,12 @@ function consoleText(words, id, colors) {
         <div class="console-underscore" id="console">&#95;</div>
       </div>
     </div>
+
     <div class="slider-wrapper">
       <div
         id="carouselExampleCaptions"
         class="carousel slide"
-        data-bs-ride="false"
+        data-bs-ride="carousel"
       >
         <div class="carousel-indicators">
           <button
