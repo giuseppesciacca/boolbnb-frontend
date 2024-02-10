@@ -50,7 +50,7 @@ export default {
           this.loading = false;
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     },
     resetForm() {
@@ -91,7 +91,6 @@ export default {
               if (!response.data.success) {
                 this.errors = response.data.errors;
               }
-              console.log(faker.internet.ipv4());
             })
             .catch((err) => {
               console.error(err);
