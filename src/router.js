@@ -28,10 +28,10 @@ const router = createRouter({
       component: SingleApartment,
     },
     {
-        path: "/:pathMatch(.*)*",
-        name: "error",
-        component: ErrorView,
-      },
+      path: "/:pathMatch(.*)*",
+      name: "error",
+      component: ErrorView,
+    },
   ],
 });
 

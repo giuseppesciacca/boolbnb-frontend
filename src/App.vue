@@ -1,26 +1,26 @@
 <script>
-import AppHeader from './components/AppHeader.vue'
-import AppFooter from './components/AppFooter.vue';
-import { RouterView } from 'vue-router';
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
+import { RouterView } from "vue-router";
 
 export default {
-    components: {
+  components: {
     AppHeader,
     RouterView,
-    AppFooter
-}
-}
+    AppFooter,
+  },
+};
 </script>
 
 <template>
-    <AppHeader />
-    <router-view></router-view>
-    <AppFooter />
+  <AppHeader />
+  <RouterView />
+  <AppFooter />
 </template>
 
 <style lang="scss">
-@use './styles/general.scss';
+@use "./styles/general.scss";
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 </style>
