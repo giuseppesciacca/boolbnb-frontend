@@ -4,6 +4,9 @@ Benvenuti in questo repository dedicato alla replica di un sito ispirato ad Airb
 
 ## Il Team Five ha realizzato questo progetto 📚
 
+[Giuseppe Sciacca](https://github.com/giuseppesciacca)
+Full-Stack Web Developer | Agronomo
+
 [Luca Piacentini](https://github.com/LookasWasTaken)
 Full-Stack Web Developer | Chinesiologo
 
@@ -13,11 +16,8 @@ Full-Stack Web Developer
 [Domiziano De Santis](https://github.com/DeSantisDomiziano)
 Full-Stack Web Developer
 
-[Carmelo Leone](https://github.com/LeoneCarmelo) 
+[Carmelo Leone](https://github.com/LeoneCarmelo)
 Full-Stack Web Developer | Chitarrista dei 7 Black Sides
-
-[Giuseppe Sciacca](https://github.com/giuseppesciacca)
-Full-Stack Web Developer | Agronomo
 
 ## Avviso importante
 

@@ -36,7 +36,7 @@ export default {
       };
 
       axios
-        .post(store.server + store.end_point_messages, data)
+        .post(store.server + store.api_get.end_point_messages, data)
         .then((response) => {
           if (!response.data.success) {
             this.errors = response.data.errors;
@@ -63,7 +63,11 @@ export default {
      * GET PER L'APT
      */
     axios
-      .get(store.server + store.end_point_apartments + this.$route.params.slug)
+      .get(
+        store.server +
+          store.api_get.end_point_apartments +
+          this.$route.params.slug
+      )
       .then((response) => {
         if (response.data.success) {
           this.apartments = response.data.result;
