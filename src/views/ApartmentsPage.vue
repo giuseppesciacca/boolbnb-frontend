@@ -56,9 +56,37 @@ export default {
       return distanceInKmRounded;
     },
     /**
+     * resetta i filtri
+     */
+    resetFilter() {
+      this.rooms = 1;
+      this.beds = 1;
+      this.selected_service = [];
+      this.range = 20;
+    },
+    /**
+     * remove Sponsored Apartment From All Apartments
+     * @returns Array apartments[]
+     */
+    removeSponsoredApartmentFromAllApartments() {
+      this.apartments = this.all_apartments.filter((element1) => {
+        return !this.all_apartments_sponsored.some(
+          (element2) => element2.title === element1.title
+        );
+      });
+    },
+    /**
+     * clicca sullo span #suggestion_city per cambiare il value di input
+     */
+    changeInputValue() {
+      this.text_to_convert = this.city;
+    },
+  },
+  computed: {
+    /**
      * filtro dei servizi e per range
      */
-    filter_apartments() {
+    filter_apartments: function () {
       if (this.all_apartments_sponsored) {
         this.clean_apartments = [];
         this.all_apartments_sponsored.forEach((apartment) => {
@@ -131,34 +159,6 @@ export default {
         });
       }
     },
-    /**
-     * resetta i filtri
-     */
-    resetFilter() {
-      this.rooms = 1;
-      this.beds = 1;
-      this.selected_service = [];
-      this.range = 20;
-    },
-    /**
-     * remove Sponsored Apartment From All Apartments
-     * @returns Array apartments[]
-     */
-    removeSponsoredApartmentFromAllApartments() {
-      this.apartments = this.all_apartments.filter((element1) => {
-        return !this.all_apartments_sponsored.some(
-          (element2) => element2.title === element1.title
-        );
-      });
-    },
-    /**
-     * clicca sullo span #suggestion_city per cambiare il value di input
-     */
-    changeInputValue() {
-      this.text_to_convert = this.city;
-    },
-  },
-  computed: {
     /**
      * converte ciò che scriviamo nell'input in lat e lon
      */
@@ -331,7 +331,7 @@ export default {
               class="btn-1"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-              @click="filter_apartments()"
+              @click="filter_apartments"
             >
               Cerca
             </button>
@@ -357,7 +357,7 @@ export default {
         <div class="text-center my-2 d-inline-block mx-3">
           <div class="text-center mt-0 search-box">
             <button class="btn-search" aria-label="search button">
-              <i class="fas fa-search" @click="filter_apartments()"></i>
+              <i class="fas fa-search" @click="filter_apartments"></i>
             </button>
             <input
               type="text"
@@ -368,7 +368,7 @@ export default {
               v-model="text_to_convert"
               aria-describedby="nameHelper"
               @keyup="convertInLatLog"
-              @keydown.enter="filter_apartments()"
+              @keydown.enter="filter_apartments"
             />
           </div>
         </div>

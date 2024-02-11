@@ -1,9 +1,6 @@
 <script>
 export default {
   name: "ErrorView",
-  data() {
-    return {};
-  },
   methods: {},
   mounted() {
     consoleText(
