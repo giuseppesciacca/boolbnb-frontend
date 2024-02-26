@@ -27,6 +27,39 @@ export default {
   },
   methods: {
     /**
+     * GET all_apartments, all_apartments_sponsored, clean_apartments, call removeSponsoredApartmentFromAllApartments()
+     */
+    getAllApartments() {
+      axios
+        .get(store.server + store.api_get.end_point_apartments)
+        .then((response) => {
+          this.apartments = response.data.results.data;
+          this.all_apartments = response.data.all_apartments;
+          this.all_apartments_sponsored =
+            response.data.all_apartments_sponsored.data;
+          this.clean_apartments = response.data.all_apartments_sponsored.data;
+          this.removeSponsoredApartmentFromAllApartments();
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error(err.message);
+        });
+    },
+    /**
+     * GET prende tutti i servizi e li mette in services[];
+     */
+    getAllServices() {
+      axios
+        .get(store.server + store.api_get.end_point_services)
+        .then((response) => {
+          this.services = response.data.results;
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error(err.message);
+        });
+    },
+    /**
      *
      * @param {double} lat1
      * @param {double} lon1
@@ -56,9 +89,37 @@ export default {
       return distanceInKmRounded;
     },
     /**
+     * resetta i filtri
+     */
+    resetFilter() {
+      this.rooms = 1;
+      this.beds = 1;
+      this.selected_service = [];
+      this.range = 20;
+    },
+    /**
+     * remove Sponsored Apartment From All Apartments
+     * @returns Array apartments[]
+     */
+    removeSponsoredApartmentFromAllApartments() {
+      this.apartments = this.all_apartments.filter((element1) => {
+        return !this.all_apartments_sponsored.some(
+          (element2) => element2.title === element1.title
+        );
+      });
+    },
+    /**
+     * clicca sullo span #suggestion_city per cambiare il value di input
+     */
+    changeInputValue() {
+      this.text_to_convert = this.city;
+    },
+  },
+  computed: {
+    /**
      * filtro dei servizi e per range
      */
-    filter_apartments() {
+    filter_apartments: function () {
       if (this.all_apartments_sponsored) {
         this.clean_apartments = [];
         this.all_apartments_sponsored.forEach((apartment) => {
@@ -132,34 +193,6 @@ export default {
       }
     },
     /**
-     * resetta i filtri
-     */
-    resetFilter() {
-      this.rooms = 1;
-      this.beds = 1;
-      this.selected_service = [];
-      this.range = 20;
-    },
-    /**
-     * remove Sponsored Apartment From All Apartments
-     * @returns Array apartments[]
-     */
-    removeSponsoredApartmentFromAllApartments() {
-      this.apartments = this.all_apartments.filter((element1) => {
-        return !this.all_apartments_sponsored.some(
-          (element2) => element2.title === element1.title
-        );
-      });
-    },
-    /**
-     * clicca sullo span #suggestion_city per cambiare il value di input
-     */
-    changeInputValue() {
-      this.text_to_convert = this.city;
-    },
-  },
-  computed: {
-    /**
      * converte ciò che scriviamo nell'input in lat e lon
      */
     convertInLatLog: function () {
@@ -197,36 +230,8 @@ export default {
     },
   },
   mounted() {
-    /**
-     *
-     */
-    axios
-      .get(store.server + store.api_get.end_point_apartments)
-      .then((response) => {
-        this.apartments = response.data.results.data;
-        this.all_apartments = response.data.all_apartments;
-        this.all_apartments_sponsored =
-          response.data.all_apartments_sponsored.data;
-        this.clean_apartments = response.data.all_apartments_sponsored.data;
-        this.removeSponsoredApartmentFromAllApartments();
-      })
-      .catch((err) => {
-        console.error(err);
-        console.error(err.message);
-      });
-
-    /**
-     * prende tutti i servizi e li mette in services[];
-     */
-    axios
-      .get(store.server + store.api_get.end_point_services)
-      .then((response) => {
-        this.services = response.data.results;
-      })
-      .catch((err) => {
-        console.error(err);
-        console.error(err.message);
-      });
+    this.getAllApartments();
+    this.getAllServices();
   },
 };
 </script>
@@ -331,7 +336,7 @@ export default {
               class="btn-1"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-              @click="filter_apartments()"
+              @click="filter_apartments"
             >
               Cerca
             </button>
@@ -357,7 +362,7 @@ export default {
         <div class="text-center my-2 d-inline-block mx-3">
           <div class="text-center mt-0 search-box">
             <button class="btn-search" aria-label="search button">
-              <i class="fas fa-search" @click="filter_apartments()"></i>
+              <i class="fas fa-search" @click="filter_apartments"></i>
             </button>
             <input
               type="text"
@@ -366,9 +371,8 @@ export default {
               class="input-search"
               placeholder="Cerca una città..."
               v-model="text_to_convert"
-              aria-describedby="nameHelper"
               @keyup="convertInLatLog"
-              @keydown.enter="filter_apartments()"
+              @keydown.enter="filter_apartments"
             />
           </div>
         </div>
