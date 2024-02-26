@@ -27,6 +27,39 @@ export default {
   },
   methods: {
     /**
+     * GET all_apartments, all_apartments_sponsored, clean_apartments, call removeSponsoredApartmentFromAllApartments()
+     */
+    getAllApartments() {
+      axios
+        .get(store.server + store.api_get.end_point_apartments)
+        .then((response) => {
+          this.apartments = response.data.results.data;
+          this.all_apartments = response.data.all_apartments;
+          this.all_apartments_sponsored =
+            response.data.all_apartments_sponsored.data;
+          this.clean_apartments = response.data.all_apartments_sponsored.data;
+          this.removeSponsoredApartmentFromAllApartments();
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error(err.message);
+        });
+    },
+    /**
+     * GET prende tutti i servizi e li mette in services[];
+     */
+    getAllServices() {
+      axios
+        .get(store.server + store.api_get.end_point_services)
+        .then((response) => {
+          this.services = response.data.results;
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error(err.message);
+        });
+    },
+    /**
      *
      * @param {double} lat1
      * @param {double} lon1
@@ -197,36 +230,8 @@ export default {
     },
   },
   mounted() {
-    /**
-     *
-     */
-    axios
-      .get(store.server + store.api_get.end_point_apartments)
-      .then((response) => {
-        this.apartments = response.data.results.data;
-        this.all_apartments = response.data.all_apartments;
-        this.all_apartments_sponsored =
-          response.data.all_apartments_sponsored.data;
-        this.clean_apartments = response.data.all_apartments_sponsored.data;
-        this.removeSponsoredApartmentFromAllApartments();
-      })
-      .catch((err) => {
-        console.error(err);
-        console.error(err.message);
-      });
-
-    /**
-     * prende tutti i servizi e li mette in services[];
-     */
-    axios
-      .get(store.server + store.api_get.end_point_services)
-      .then((response) => {
-        this.services = response.data.results;
-      })
-      .catch((err) => {
-        console.error(err);
-        console.error(err.message);
-      });
+    this.getAllApartments();
+    this.getAllServices();
   },
 };
 </script>
@@ -366,7 +371,6 @@ export default {
               class="input-search"
               placeholder="Cerca una città..."
               v-model="text_to_convert"
-              aria-describedby="nameHelper"
               @keyup="convertInLatLog"
               @keydown.enter="filter_apartments"
             />
