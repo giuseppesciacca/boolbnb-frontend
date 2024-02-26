@@ -1,80 +1,81 @@
 @use "../root.scss" as *;
 
 #our-home {
+  /* height: 90vh; */
+  .container {
+    height: calc(100vh - 82px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    /* height: 90vh; */
-    .container {
-        height: calc(100vh - 82px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .hidden {
+    opacity: 0;
+  }
 
-    .hidden {
-        opacity: 0;
-    }
+  .console-container {
+    font-family: "Manrope";
+    font-size: 6rem;
+    text-align: center;
+    font-weight: 600;
+    max-height: 200px;
+    max-width: 700px;
+    display: block;
+    color: $ourbnb-white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0px auto;
+  }
 
-    .console-container {
-
-        font-family: "Manrope";
-        font-size: 6rem;
-        text-align: center;
-        font-weight: 600;
-        max-height: 200px;
-        max-width: 700px;
-        display: block;
-        color: $ourbnb-white;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 0px auto;
-    }
-
-    .console-underscore {
-        display: inline-block;
-        position: relative;
-        top: -0.14em;
-        left: 10px;
-    }
+  .console-underscore {
+    display: inline-block;
+    position: relative;
+    top: -0.14em;
+    left: 10px;
+  }
 }
 
 .carousel-inner {
-    max-height: 100vh;
+  max-height: 100vh;
 }
 
 .carousel-item {
-    max-height: 100vh;
-    background-color: $ourbnb-black;
+  max-height: 100vh;
+  background-color: $ourbnb-black;
 
-    img {
-        object-fit: cover;
-        margin: auto;
-        height: 100vh;
+  img {
+    object-fit: cover;
+    margin: auto;
+  }
+
+  .img-carousel-home {
+    height: 100vh;
+  }
+
+  .text-bnb {
+    color: $ourbnb-white;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      color: $ourbnb-light-grey;
     }
 
-    .text-bnb {
-        color: $ourbnb-white;
-        transition: all 0.1s ease-in-out;
-
-        &:hover {
-            color: $ourbnb-light-grey;
-        }
-
-        &:active {
-            scale: 0.7;
-        }
+    &:active {
+      scale: 0.7;
     }
+  }
 }
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
-    width: 5rem !important;
-    height: 5rem !important;
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
 .call-to-action {
-    a {
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
 }

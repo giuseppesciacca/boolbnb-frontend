@@ -182,6 +182,7 @@ export default {
             </div>
           </div>
         </div>
+        <!-- /description -->
 
         <div class="col-auto position-relative px-0">
           <div class="card p-2 shadow">
@@ -251,6 +252,8 @@ export default {
             </button>
           </div>
         </div>
+        <!-- /carousel -->
+
         <div class="col-auto pt-5 mt-5">
           <h4
             class="our-address d-flex justify-content-start align-items-center gap-2 mb-0 my-2 py-2"
@@ -260,6 +263,7 @@ export default {
           </h4>
           <MapMarker :lat="apartments.latitude" :lon="apartments.longitude" />
         </div>
+        <!-- /map -->
 
         <div class="col-auto card shadow p-3 mt-5">
           <h4 class="text-center mb-3 fw-semibold">
@@ -378,6 +382,7 @@ export default {
             </div>
           </form>
         </div>
+        <!-- /form -->
       </div>
     </div>
   </div>
@@ -387,5 +392,9 @@ export default {
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   scale: 0.7;
+}
+
+img {
+  aspect-ratio: 16 / 9;
 }
 </style>

@@ -124,7 +124,7 @@ export default {
           <div class="carousel-item active">
             <img
               src="https://s1.1zoom.me/b5050/704/Italy_Coast_Sea_Houses_Manarola_Crag_616074_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="Manarola"
             />
             <div class="carousel-caption">
@@ -140,7 +140,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/b5050/684/Houses_Riverboat_Amsterdam_Netherlands_Canal_581172_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt=".Amsterdam"
             />
             <div class="carousel-caption">
@@ -156,7 +156,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/b5050/538/Japan_Tokyo_Temples_Flowering_trees_Asakusa_Kannon_549958_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="Tokyo"
             />
             <div class="carousel-caption">
@@ -172,7 +172,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/big0/725/USA_Houses_Skyscrapers_New_York_City_Manhattan_615289_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="New York"
             />
             <div class="carousel-caption">
@@ -188,7 +188,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/big3/565/Italy_Rome_Houses_Monuments_Milan_Monumento_a_615211_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="Roma"
             />
             <div class="carousel-caption">
@@ -204,7 +204,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/big0/221/France_Houses_People_Colmar_Canal_Waterfront_616121_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="Colmar"
             />
             <div class="carousel-caption">
@@ -223,7 +223,7 @@ export default {
           <div class="carousel-item">
             <img
               src="https://s1.1zoom.me/big0/342/Greece_Villa_Evening_Houses_corfu_kaminaki_Pools_594552_1920x1200.jpg"
-              class="d-block w-100"
+              class="d-block w-100 img-carousel-home"
               alt="Corfù"
             />
             <div class="carousel-caption">
