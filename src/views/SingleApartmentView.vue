@@ -25,14 +25,67 @@ export default {
     };
   },
   methods: {
-    submitForm(apartment) {
+    /**
+     * GET PER L'APT
+     */
+    getApartment() {
+      axios
+        .get(
+          store.server +
+            store.api_get.end_point_apartments +
+            this.$route.params.slug
+        )
+        .then((response) => {
+          if (response.data.success) {
+            this.apartments = response.data.result;
+            this.position = {
+              lng: this.apartments.longitude,
+              lat: this.apartments.latitude,
+            };
+            /**
+             * POST PER LA VIEW
+             */
+            axios
+              .post(store.server + store.api_post.end_point_views, {
+                apartment_id: this.apartments.id,
+                ip_address: faker.internet.ipv4(),
+                date_view: this.currentDate
+                  .toISOString()
+                  .replace("T", " ")
+                  .slice(0, 19),
+              })
+              .then((response) => {
+                if (!response.data.success) {
+                  this.errors = response.data.errors;
+                }
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          } else {
+            this.$router.push({
+              name: "error",
+              params: { pathMatch: this.$route.path.substring(1).split("/") },
+            });
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          console.error(err.message);
+        });
+    },
+    /**
+     * submit form for message
+     * @param {string} apartmentId
+     */
+    submitForm(apartmentId) {
       this.loading = true;
       const data = {
         name: this.name,
         surname: this.surname,
         email: this.email,
         message: this.message,
-        apartment_id: apartment,
+        apartment_id: apartmentId,
       };
 
       axios
@@ -53,59 +106,15 @@ export default {
           console.error(err);
         });
     },
+    /**
+     * reset form fields
+     */
     resetForm() {
       this.errors = {};
     },
   },
-
   mounted() {
-    /**
-     * GET PER L'APT
-     */
-    axios
-      .get(
-        store.server +
-          store.api_get.end_point_apartments +
-          this.$route.params.slug
-      )
-      .then((response) => {
-        if (response.data.success) {
-          this.apartments = response.data.result;
-          this.position = {
-            lng: this.apartments.longitude,
-            lat: this.apartments.latitude,
-          };
-          /**
-           * POST PER LA VIEW
-           */
-          axios
-            .post(store.server + store.api_post.end_point_views, {
-              apartment_id: this.apartments.id,
-              ip_address: faker.internet.ipv4(),
-              date_view: this.currentDate
-                .toISOString()
-                .replace("T", " ")
-                .slice(0, 19),
-            })
-            .then((response) => {
-              if (!response.data.success) {
-                this.errors = response.data.errors;
-              }
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        } else {
-          this.$router.push({
-            name: "error",
-            params: { pathMatch: this.$route.path.substring(1).split("/") },
-          });
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        console.error(err.message);
-      });
+    this.getApartment();
   },
 };
 </script>
