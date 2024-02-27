@@ -1,6 +1,13 @@
 <script>
+import { carouselData } from "../carouselData";
+
 export default {
   name: "HomeView",
+  data() {
+    return {
+      carouselData,
+    };
+  },
   methods: {
     consoleText(words, id, colors) {
       if (colors === undefined) colors = ["#222"];
@@ -120,114 +127,19 @@ export default {
             aria-label="Slide 7"
           ></button>
         </div>
+        <!-- /carousel-indicators -->
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div
+            v-for="(data, index) in carouselData"
+            :class="['carousel-item', { active: index === 0 }]"
+          >
             <img
-              src="https://s1.1zoom.me/b5050/704/Italy_Coast_Sea_Houses_Manarola_Crag_616074_1920x1200.jpg"
+              :src="data.src"
               class="d-block w-100 img-carousel-home"
-              alt="Manarola"
+              :alt="data.alt"
             />
             <div class="carousel-caption">
-              <h5>La città di Manarola sulla costa ligure, in Italia</h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/b5050/684/Houses_Riverboat_Amsterdam_Netherlands_Canal_581172_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt=".Amsterdam"
-            />
-            <div class="carousel-caption">
-              <h5>Le case fluviali di Amsterdam, nei Paesi Bassi</h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/b5050/538/Japan_Tokyo_Temples_Flowering_trees_Asakusa_Kannon_549958_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt="Tokyo"
-            />
-            <div class="carousel-caption">
-              <h5>Il tempio Asakusa Kannon a Tokyo, in Giappone</h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/big0/725/USA_Houses_Skyscrapers_New_York_City_Manhattan_615289_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt="New York"
-            />
-            <div class="carousel-caption">
-              <h5>Lo skyline notturno di Manhattan, a New York</h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/big3/565/Italy_Rome_Houses_Monuments_Milan_Monumento_a_615211_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt="Roma"
-            />
-            <div class="carousel-caption">
-              <h5>L'imponente monumento a Vittorio Emanuele II, a Roma</h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/big0/221/France_Houses_People_Colmar_Canal_Waterfront_616121_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt="Colmar"
-            />
-            <div class="carousel-caption">
-              <h5>
-                Il lungomare artificiale di Colmar, città nord-orientale della
-                Francia
-              </h5>
-              <router-link
-                :to="{ name: 'apartments' }"
-                class="text-decoration-none"
-              >
-                <span class="text-bnb">Questo e tanto altro su Boolbnb!</span>
-              </router-link>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://s1.1zoom.me/big0/342/Greece_Villa_Evening_Houses_corfu_kaminaki_Pools_594552_1920x1200.jpg"
-              class="d-block w-100 img-carousel-home"
-              alt="Corfù"
-            />
-            <div class="carousel-caption">
-              <h5>L'elegante Villa Kaminaki dell'isola di Corfù, in Grecia</h5>
+              <h5>{{ data.title }}</h5>
               <router-link
                 :to="{ name: 'apartments' }"
                 class="text-decoration-none"
@@ -237,6 +149,7 @@ export default {
             </div>
           </div>
         </div>
+        <!-- /carousel-inner -->
         <button
           class="carousel-control-prev"
           type="button"
@@ -246,6 +159,7 @@ export default {
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
+        <!-- /carousel-control-prev -->
         <button
           class="carousel-control-next"
           type="button"
@@ -255,6 +169,7 @@ export default {
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+        <!-- /carousel-control-next -->
       </div>
     </div>
   </div>
