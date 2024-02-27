@@ -1,5 +1,5 @@
 <script>
-import { carouselData } from "../carouselData";
+import { carouselData } from "../assets/data/carouselData";
 
 export default {
   name: "HomeView",
