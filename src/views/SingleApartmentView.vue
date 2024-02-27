@@ -208,19 +208,14 @@ export default {
                 ></button>
               </div>
               <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div
+                  v-for="(image, index) in apartments.image"
+                  :class="['carousel-item', { active: index === 0 }]"
+                >
                   <img
-                    :src="`${store.server}storage/${apartments.image[0]}`"
+                    :src="`${store.server}storage/${image}`"
                     class="d-block w-100"
-                    alt="..."
-                  />
-                  <div class="carousel-caption d-none d-md-block"></div>
-                </div>
-                <div class="carousel-item">
-                  <img
-                    :src="`${store.server}storage/${apartments.image[1]}`"
-                    class="d-block w-100"
-                    alt="..."
+                    :alt="apartments.title"
                   />
                   <div class="carousel-caption d-none d-md-block"></div>
                 </div>

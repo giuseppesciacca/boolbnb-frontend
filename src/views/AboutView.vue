@@ -1,5 +1,5 @@
 <script>
-import { team } from "../team.js";
+import { team } from "../assets/data/team";
 export default {
   name: "AboutView",
   data() {
